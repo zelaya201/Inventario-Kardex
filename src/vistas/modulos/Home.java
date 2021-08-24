@@ -22,7 +22,6 @@ public class Home extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         article1 = new javax.swing.JPanel();
         barChart = new javax.swing.JPanel();
-        pChart = new javax.swing.JPanel();
 
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
@@ -48,21 +47,10 @@ public class Home extends javax.swing.JPanel {
         article1.setOpaque(false);
         article1.setLayout(new javax.swing.BoxLayout(article1, javax.swing.BoxLayout.LINE_AXIS));
 
-        barChart.setOpaque(false);
+        barChart.setBackground(new java.awt.Color(255, 255, 255));
+        barChart.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 0, 0, 0, new java.awt.Color(241, 123, 55)));
+        barChart.setForeground(new java.awt.Color(255, 255, 255));
         barChart.setLayout(new java.awt.GridBagLayout());
-
-        pChart.setBackground(new java.awt.Color(255, 255, 255));
-        pChart.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 0, 0, 0, new java.awt.Color(241, 123, 55)));
-        pChart.setLayout(new javax.swing.BoxLayout(pChart, javax.swing.BoxLayout.LINE_AXIS));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        barChart.add(pChart, gridBagConstraints);
-
         article1.add(barChart);
 
         add(article1, java.awt.BorderLayout.CENTER);
@@ -74,6 +62,5 @@ public class Home extends javax.swing.JPanel {
     public javax.swing.JPanel barChart;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel pChart;
     // End of variables declaration//GEN-END:variables
 }

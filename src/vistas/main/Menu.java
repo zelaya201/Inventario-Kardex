@@ -1,8 +1,8 @@
 package vistas.main;
 
+import controlador.Controlador;
+import java.awt.Color;
 import javax.swing.JFrame;
-import utilidades.CambiaPanel;
-import vistas.modulos.Home;
 
 
 public class Menu extends javax.swing.JFrame {
@@ -14,13 +14,18 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        new CambiaPanel(this.body, new Home());
         this.btnCompraEntradas.setVisible(false);
         this.btnDevoEntradas.setVisible(false);
         this.btnVentaSalidas.setVisible(false);
         this.btnDevoSalidas.setVisible(false);
+        this.btnHome.setActionCommand("Inicio");
+        this.btnProducto.setActionCommand("Productos");
     }
 
+    public void setControlador(Controlador control){
+        this.btnHome.addActionListener(control);
+        this.btnProducto.addActionListener(control);
+    }
     
     public void iniciar(){
         this.setVisible(true);
@@ -47,7 +52,7 @@ public class Menu extends javax.swing.JFrame {
         btnCompraEntradas = new newscomponents.RSButtonIcon_new();
         btnEntradas = new newscomponents.RSButtonIcon_new();
         btnDevoEntradas = new newscomponents.RSButtonIcon_new();
-        rSButtonIcon_new9 = new newscomponents.RSButtonIcon_new();
+        btnProducto = new newscomponents.RSButtonIcon_new();
         header = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         btnMenu = new RSMaterialComponent.RSButtonIconOne();
@@ -82,6 +87,7 @@ public class Menu extends javax.swing.JFrame {
         rSButtonIcon_new3.setText("Reporte Kardex");
         rSButtonIcon_new3.setBackgroundHover(new java.awt.Color(61, 137, 248));
         rSButtonIcon_new3.setFocusPainted(false);
+        rSButtonIcon_new3.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         rSButtonIcon_new3.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         rSButtonIcon_new3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         rSButtonIcon_new3.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.NOTE);
@@ -96,6 +102,7 @@ public class Menu extends javax.swing.JFrame {
         btnHome.setText("Inicio");
         btnHome.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnHome.setFocusPainted(false);
+        btnHome.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         btnHome.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnHome.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.HOME);
@@ -115,6 +122,7 @@ public class Menu extends javax.swing.JFrame {
         btnSalidas.setText("Salidas");
         btnSalidas.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnSalidas.setFocusPainted(false);
+        btnSalidas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         btnSalidas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnSalidas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSalidas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
@@ -136,7 +144,7 @@ public class Menu extends javax.swing.JFrame {
         btnDevoSalidas.setText("Devolución");
         btnDevoSalidas.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnDevoSalidas.setFocusPainted(false);
-        btnDevoSalidas.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
+        btnDevoSalidas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         btnDevoSalidas.setForegroundIcon(new java.awt.Color(42, 53, 66));
         btnDevoSalidas.setForegroundText(new java.awt.Color(42, 53, 66));
         btnDevoSalidas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -155,7 +163,7 @@ public class Menu extends javax.swing.JFrame {
         btnVentaSalidas.setText("Venta");
         btnVentaSalidas.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnVentaSalidas.setFocusPainted(false);
-        btnVentaSalidas.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
+        btnVentaSalidas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         btnVentaSalidas.setForegroundIcon(new java.awt.Color(42, 53, 66));
         btnVentaSalidas.setForegroundText(new java.awt.Color(42, 53, 66));
         btnVentaSalidas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -174,7 +182,7 @@ public class Menu extends javax.swing.JFrame {
         btnCompraEntradas.setText("Compra");
         btnCompraEntradas.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnCompraEntradas.setFocusPainted(false);
-        btnCompraEntradas.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
+        btnCompraEntradas.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         btnCompraEntradas.setForegroundIcon(new java.awt.Color(42, 53, 66));
         btnCompraEntradas.setForegroundText(new java.awt.Color(42, 53, 66));
         btnCompraEntradas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -191,6 +199,7 @@ public class Menu extends javax.swing.JFrame {
         btnEntradas.setText("Entradas");
         btnEntradas.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnEntradas.setFocusPainted(false);
+        btnEntradas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
         btnEntradas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnEntradas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEntradas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
@@ -212,7 +221,7 @@ public class Menu extends javax.swing.JFrame {
         btnDevoEntradas.setText("Devolución");
         btnDevoEntradas.setBackgroundHover(new java.awt.Color(61, 137, 248));
         btnDevoEntradas.setFocusPainted(false);
-        btnDevoEntradas.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
+        btnDevoEntradas.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         btnDevoEntradas.setForegroundIcon(new java.awt.Color(42, 53, 66));
         btnDevoEntradas.setForegroundText(new java.awt.Color(42, 53, 66));
         btnDevoEntradas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
@@ -225,19 +234,25 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         modulos.add(btnDevoEntradas, gridBagConstraints);
 
-        rSButtonIcon_new9.setBackground(new java.awt.Color(42, 53, 66));
-        rSButtonIcon_new9.setText("Productos");
-        rSButtonIcon_new9.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        rSButtonIcon_new9.setFocusPainted(false);
-        rSButtonIcon_new9.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        rSButtonIcon_new9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        rSButtonIcon_new9.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.INBOX);
-        rSButtonIcon_new9.setVerifyInputWhenFocusTarget(false);
+        btnProducto.setBackground(new java.awt.Color(42, 53, 66));
+        btnProducto.setText("Productos");
+        btnProducto.setBackgroundHover(new java.awt.Color(61, 137, 248));
+        btnProducto.setFocusPainted(false);
+        btnProducto.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
+        btnProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProducto.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.INBOX);
+        btnProducto.setVerifyInputWhenFocusTarget(false);
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(rSButtonIcon_new9, gridBagConstraints);
+        modulos.add(btnProducto, gridBagConstraints);
 
         aside.add(modulos);
 
@@ -323,46 +338,57 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalidasActionPerformed
 
+    public void resetMenu(){
+        this.btnHome.setBackground(new Color(42,53,66));
+        this.btnProducto.setBackground(new Color(42,53,66));
+    }
+    
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        new CambiaPanel(this.body, new Home());
+        resetMenu();
+        this.btnHome.setBackground(new Color(241,123,55));
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        resetMenu();
+        this.btnProducto.setBackground(new Color(241,123,55));
+    }//GEN-LAST:event_btnProductoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
-    }
+    
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Menu().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel aside;
@@ -371,8 +397,9 @@ public class Menu extends javax.swing.JFrame {
     private newscomponents.RSButtonIcon_new btnDevoEntradas;
     private newscomponents.RSButtonIcon_new btnDevoSalidas;
     private newscomponents.RSButtonIcon_new btnEntradas;
-    private newscomponents.RSButtonIcon_new btnHome;
+    public newscomponents.RSButtonIcon_new btnHome;
     private RSMaterialComponent.RSButtonIconOne btnMenu;
+    public newscomponents.RSButtonIcon_new btnProducto;
     private newscomponents.RSButtonIcon_new btnSalidas;
     private newscomponents.RSButtonIcon_new btnVentaSalidas;
     private javax.swing.JPanel header;
@@ -380,6 +407,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     public javax.swing.JPanel modulos;
     private newscomponents.RSButtonIcon_new rSButtonIcon_new3;
-    private newscomponents.RSButtonIcon_new rSButtonIcon_new9;
     // End of variables declaration//GEN-END:variables
 }
