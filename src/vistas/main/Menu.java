@@ -8,16 +8,16 @@ import javax.swing.JFrame;
 public class Menu extends javax.swing.JFrame {
 
     boolean menuActived = true;
-    boolean opEntradas = false;
-    boolean opSalidas = false;
+//    boolean opEntradas = false;
+//    boolean opSalidas = false;
     
     public Menu() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.btnCompraEntradas.setVisible(false);
-        this.btnDevoEntradas.setVisible(false);
-        this.btnVentaSalidas.setVisible(false);
-        this.btnDevoSalidas.setVisible(false);
+//        this.btnCompraEntradas.setVisible(false);
+//        this.btnDevoEntradas.setVisible(false);
+//        this.btnVentaSalidas.setVisible(false);
+//        this.btnDevoSalidas.setVisible(false);
         this.btnHome.setActionCommand("Inicio");
         this.btnProducto.setActionCommand("Productos");
     }
@@ -46,12 +46,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         rSButtonIcon_new3 = new newscomponents.RSButtonIcon_new();
         btnHome = new newscomponents.RSButtonIcon_new();
-        btnSalidas = new newscomponents.RSButtonIcon_new();
-        btnDevoSalidas = new newscomponents.RSButtonIcon_new();
-        btnVentaSalidas = new newscomponents.RSButtonIcon_new();
-        btnCompraEntradas = new newscomponents.RSButtonIcon_new();
-        btnEntradas = new newscomponents.RSButtonIcon_new();
-        btnDevoEntradas = new newscomponents.RSButtonIcon_new();
+        btnMovimiento = new newscomponents.RSButtonIcon_new();
         btnProducto = new newscomponents.RSButtonIcon_new();
         header = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -118,121 +113,26 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         modulos.add(btnHome, gridBagConstraints);
 
-        btnSalidas.setBackground(new java.awt.Color(42, 53, 66));
-        btnSalidas.setText("Salidas");
-        btnSalidas.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnSalidas.setFocusPainted(false);
-        btnSalidas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnSalidas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnSalidas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnSalidas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
-        btnSalidas.setVerifyInputWhenFocusTarget(false);
-        btnSalidas.addActionListener(new java.awt.event.ActionListener() {
+        btnMovimiento.setBackground(new java.awt.Color(42, 53, 66));
+        btnMovimiento.setText("Movimientos");
+        btnMovimiento.setBackgroundHover(new java.awt.Color(61, 137, 248));
+        btnMovimiento.setFocusPainted(false);
+        btnMovimiento.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
+        btnMovimiento.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnMovimiento.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnMovimiento.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SETTINGS);
+        btnMovimiento.setOpaque(true);
+        btnMovimiento.setVerifyInputWhenFocusTarget(false);
+        btnMovimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalidasActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnSalidas, gridBagConstraints);
-
-        btnDevoSalidas.setBackground(new java.awt.Color(255, 255, 255));
-        btnDevoSalidas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        btnDevoSalidas.setForeground(new java.awt.Color(51, 51, 51));
-        btnDevoSalidas.setText("Devolución");
-        btnDevoSalidas.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnDevoSalidas.setFocusPainted(false);
-        btnDevoSalidas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnDevoSalidas.setForegroundIcon(new java.awt.Color(42, 53, 66));
-        btnDevoSalidas.setForegroundText(new java.awt.Color(42, 53, 66));
-        btnDevoSalidas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnDevoSalidas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnDevoSalidas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ASSIGNMENT_RETURN);
-        btnDevoSalidas.setVerifyInputWhenFocusTarget(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnDevoSalidas, gridBagConstraints);
-
-        btnVentaSalidas.setBackground(new java.awt.Color(255, 255, 255));
-        btnVentaSalidas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        btnVentaSalidas.setForeground(new java.awt.Color(51, 51, 51));
-        btnVentaSalidas.setText("Venta");
-        btnVentaSalidas.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnVentaSalidas.setFocusPainted(false);
-        btnVentaSalidas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnVentaSalidas.setForegroundIcon(new java.awt.Color(42, 53, 66));
-        btnVentaSalidas.setForegroundText(new java.awt.Color(42, 53, 66));
-        btnVentaSalidas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnVentaSalidas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnVentaSalidas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD_SHOPPING_CART);
-        btnVentaSalidas.setVerifyInputWhenFocusTarget(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnVentaSalidas, gridBagConstraints);
-
-        btnCompraEntradas.setBackground(new java.awt.Color(255, 255, 255));
-        btnCompraEntradas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        btnCompraEntradas.setForeground(new java.awt.Color(51, 51, 51));
-        btnCompraEntradas.setText("Compra");
-        btnCompraEntradas.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnCompraEntradas.setFocusPainted(false);
-        btnCompraEntradas.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        btnCompraEntradas.setForegroundIcon(new java.awt.Color(42, 53, 66));
-        btnCompraEntradas.setForegroundText(new java.awt.Color(42, 53, 66));
-        btnCompraEntradas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnCompraEntradas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCompraEntradas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD_SHOPPING_CART);
-        btnCompraEntradas.setVerifyInputWhenFocusTarget(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnCompraEntradas, gridBagConstraints);
-
-        btnEntradas.setBackground(new java.awt.Color(42, 53, 66));
-        btnEntradas.setText("Entradas");
-        btnEntradas.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnEntradas.setFocusPainted(false);
-        btnEntradas.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnEntradas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnEntradas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnEntradas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
-        btnEntradas.setVerifyInputWhenFocusTarget(false);
-        btnEntradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntradasActionPerformed(evt);
+                btnMovimientoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnEntradas, gridBagConstraints);
-
-        btnDevoEntradas.setBackground(new java.awt.Color(255, 255, 255));
-        btnDevoEntradas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        btnDevoEntradas.setForeground(new java.awt.Color(51, 51, 51));
-        btnDevoEntradas.setText("Devolución");
-        btnDevoEntradas.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnDevoEntradas.setFocusPainted(false);
-        btnDevoEntradas.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        btnDevoEntradas.setForegroundIcon(new java.awt.Color(42, 53, 66));
-        btnDevoEntradas.setForegroundText(new java.awt.Color(42, 53, 66));
-        btnDevoEntradas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnDevoEntradas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnDevoEntradas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ASSIGNMENT_RETURN);
-        btnDevoEntradas.setVerifyInputWhenFocusTarget(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnDevoEntradas, gridBagConstraints);
+        modulos.add(btnMovimiento, gridBagConstraints);
 
         btnProducto.setBackground(new java.awt.Color(42, 53, 66));
         btnProducto.setText("Productos");
@@ -310,37 +210,26 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradasActionPerformed
-        if(opEntradas == false){
-            opEntradas = true;
-            this.btnCompraEntradas.setVisible(true);
-            this.btnDevoEntradas.setVisible(true);
-            this.btnEntradas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.EXPAND_MORE);
-        }else{
-            opEntradas = false;
-            this.btnCompraEntradas.setVisible(false);
-            this.btnDevoEntradas.setVisible(false);
-            this.btnEntradas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
-        }
-    }//GEN-LAST:event_btnEntradasActionPerformed
-
-    private void btnSalidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidasActionPerformed
-        if(opSalidas == false){
-            opSalidas = true;
-            this.btnVentaSalidas.setVisible(true);
-            this.btnDevoSalidas.setVisible(true);
-            this.btnSalidas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.EXPAND_MORE);
-        }else{
-            opSalidas = false;
-            this.btnVentaSalidas.setVisible(false);
-            this.btnDevoSalidas.setVisible(false);
-            this.btnSalidas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
-        }
-    }//GEN-LAST:event_btnSalidasActionPerformed
+    private void btnMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientoActionPerformed
+//        if(opEntradas == false){
+//            opEntradas = true;
+//            this.btnCompraEntradas.setVisible(true);
+//            this.btnDevoEntradas.setVisible(true);
+//            this.btnMovimientos.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.EXPAND_MORE);
+//        }else{
+//            opEntradas = false;
+//            this.btnCompraEntradas.setVisible(false);
+//            this.btnDevoEntradas.setVisible(false);
+//            this.btnMovimientos.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
+//        }
+        resetMenu();
+        this.btnMovimiento.setBackground(new Color(241,123,55));
+    }//GEN-LAST:event_btnMovimientoActionPerformed
 
     public void resetMenu(){
         this.btnHome.setBackground(new Color(42,53,66));
         this.btnProducto.setBackground(new Color(42,53,66));
+        this.btnMovimiento.setBackground(new Color(42,53,66));
     }
     
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -393,15 +282,10 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel aside;
     public javax.swing.JPanel body;
-    private newscomponents.RSButtonIcon_new btnCompraEntradas;
-    private newscomponents.RSButtonIcon_new btnDevoEntradas;
-    private newscomponents.RSButtonIcon_new btnDevoSalidas;
-    private newscomponents.RSButtonIcon_new btnEntradas;
     public newscomponents.RSButtonIcon_new btnHome;
     private RSMaterialComponent.RSButtonIconOne btnMenu;
+    private newscomponents.RSButtonIcon_new btnMovimiento;
     public newscomponents.RSButtonIcon_new btnProducto;
-    private newscomponents.RSButtonIcon_new btnSalidas;
-    private newscomponents.RSButtonIcon_new btnVentaSalidas;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
