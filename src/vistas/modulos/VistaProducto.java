@@ -2,8 +2,6 @@ package vistas.modulos;
 
 import controlador.Controlador;
 
-import utilidades.TextPrompt;
-
 public class VistaProducto extends javax.swing.JPanel {
 
     public VistaProducto() {

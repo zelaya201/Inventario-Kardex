@@ -20,11 +20,13 @@ public class Menu extends javax.swing.JFrame {
 //        this.btnDevoSalidas.setVisible(false);
         this.btnHome.setActionCommand("Inicio");
         this.btnProducto.setActionCommand("Productos");
+        this.btnReporteKardex.setActionCommand("Kardex");
     }
 
     public void setControlador(Controlador control){
         this.btnHome.addActionListener(control);
         this.btnProducto.addActionListener(control);
+        this.btnReporteKardex.addActionListener(control);
     }
     
     public void iniciar(){
@@ -44,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
         aside = new javax.swing.JPanel();
         modulos = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        rSButtonIcon_new3 = new newscomponents.RSButtonIcon_new();
+        btnReporteKardex = new newscomponents.RSButtonIcon_new();
         btnHome = new newscomponents.RSButtonIcon_new();
         btnMovimiento = new newscomponents.RSButtonIcon_new();
         btnProducto = new newscomponents.RSButtonIcon_new();
@@ -78,20 +80,26 @@ public class Menu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 6, 0);
         modulos.add(jLabel13, gridBagConstraints);
 
-        rSButtonIcon_new3.setBackground(new java.awt.Color(42, 53, 66));
-        rSButtonIcon_new3.setText("Reporte Kardex");
-        rSButtonIcon_new3.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        rSButtonIcon_new3.setFocusPainted(false);
-        rSButtonIcon_new3.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        rSButtonIcon_new3.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        rSButtonIcon_new3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        rSButtonIcon_new3.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.NOTE);
-        rSButtonIcon_new3.setVerifyInputWhenFocusTarget(false);
+        btnReporteKardex.setBackground(new java.awt.Color(42, 53, 66));
+        btnReporteKardex.setText("Reporte Kardex");
+        btnReporteKardex.setActionCommand("Kardex");
+        btnReporteKardex.setBackgroundHover(new java.awt.Color(61, 137, 248));
+        btnReporteKardex.setFocusPainted(false);
+        btnReporteKardex.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
+        btnReporteKardex.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnReporteKardex.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnReporteKardex.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.NOTE);
+        btnReporteKardex.setVerifyInputWhenFocusTarget(false);
+        btnReporteKardex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteKardexActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(rSButtonIcon_new3, gridBagConstraints);
+        modulos.add(btnReporteKardex, gridBagConstraints);
 
         btnHome.setBackground(new java.awt.Color(241, 123, 55));
         btnHome.setText("Inicio");
@@ -230,6 +238,7 @@ public class Menu extends javax.swing.JFrame {
         this.btnHome.setBackground(new Color(42,53,66));
         this.btnProducto.setBackground(new Color(42,53,66));
         this.btnMovimiento.setBackground(new Color(42,53,66));
+        this.btnReporteKardex.setBackground(new Color(42,53,66));
     }
     
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -241,6 +250,11 @@ public class Menu extends javax.swing.JFrame {
         resetMenu();
         this.btnProducto.setBackground(new Color(241,123,55));
     }//GEN-LAST:event_btnProductoActionPerformed
+
+    private void btnReporteKardexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteKardexActionPerformed
+        resetMenu();
+        this.btnReporteKardex.setBackground(new Color(241,123,55));
+    }//GEN-LAST:event_btnReporteKardexActionPerformed
 
     
 //    /**
@@ -286,10 +300,10 @@ public class Menu extends javax.swing.JFrame {
     private RSMaterialComponent.RSButtonIconOne btnMenu;
     private newscomponents.RSButtonIcon_new btnMovimiento;
     public newscomponents.RSButtonIcon_new btnProducto;
+    public newscomponents.RSButtonIcon_new btnReporteKardex;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     public javax.swing.JPanel modulos;
-    private newscomponents.RSButtonIcon_new rSButtonIcon_new3;
     // End of variables declaration//GEN-END:variables
 }

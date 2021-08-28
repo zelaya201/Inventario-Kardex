@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import utilidades.CambiaPanel;
 import vistas.main.Menu;
 import vistas.modulos.Home;
+import vistas.modulos.VistaKardex;
 import vistas.modulos.VistaProducto;
 
 /**
@@ -23,6 +24,9 @@ public class Controlador implements ActionListener{
     
     /* PRODUCTOS */
     VistaProducto vProductos;
+    
+    /* REPORTE KARDEX */
+    VistaKardex vKardex;
 
     public Controlador(Menu vMenu) {
         this.vMenu = vMenu;
@@ -43,6 +47,9 @@ public class Controlador implements ActionListener{
         }else if(modulo.equals("mProductos")){
             vProductos = new VistaProducto();
             new CambiaPanel(vMenu.body, vProductos);
+        }else if(modulo.equals("mKardex")){
+            vKardex = new VistaKardex();
+            new CambiaPanel(vMenu.body, vKardex);
         }
     }
 
@@ -53,6 +60,8 @@ public class Controlador implements ActionListener{
             mostrarModulos("mInicio");
         }else if(ae.getActionCommand().equals("Productos")){
             mostrarModulos("mProductos");
+        }else if(ae.getActionCommand().equals("Kardex")){
+            mostrarModulos("mKardex");
         }
     }
  
