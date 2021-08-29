@@ -7,6 +7,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import modelos.Productos;
 import utilidades.CambiaPanel;
 import vistas.main.Menu;
 import vistas.modulos.Home;
@@ -22,7 +24,8 @@ public class Controlador implements ActionListener{
     Home vHome;
     
     /* PRODUCTOS */
-    VistaProducto vProductos;
+    private VistaProducto vProductos;
+    private ArrayList<Productos> saveP = new ArrayList();
 
     public Controlador(Menu vMenu) {
         this.vMenu = vMenu;
@@ -43,9 +46,11 @@ public class Controlador implements ActionListener{
         }else if(modulo.equals("mProductos")){
             vProductos = new VistaProducto();
             new CambiaPanel(vMenu.body, vProductos);
+            // Guardar el registro en un ArrayList <Intento 1>
+            
         }
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         
