@@ -8,6 +8,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import modelos.Productos;
 import utilidades.CambiaPanel;
 import vistas.main.Menu;
@@ -18,14 +20,16 @@ import vistas.modulos.VistaProducto;
  *
  * @author Adonay
  */
-public class Controlador implements ActionListener{
-    
+public class Controlador implements ActionListener {
+
     Menu vMenu;
     Home vHome;
-    
+
     /* PRODUCTOS */
-    private VistaProducto vProductos;
-    private ArrayList<Productos> saveP = new ArrayList();
+    VistaProducto vProductos;
+    private ArrayList<Productos>productos;
+    
+    private TableModel tm;
 
     public Controlador(Menu vMenu) {
         this.vMenu = vMenu;
@@ -34,31 +38,30 @@ public class Controlador implements ActionListener{
         vHome = new Home();
         new CambiaPanel(vMenu.body, vHome);
     }
+
     
-    public void mostrarMenu(){
-        
+    public void mostrarMenu() {
     }
-    
-    public void mostrarModulos(String modulo){
-        if(modulo.equals("mInicio")){
+
+    public void mostrarModulos(String modulo) {
+        if (modulo.equals("mInicio")) {
             vHome = new Home();
             new CambiaPanel(vMenu.body, vHome);
-        }else if(modulo.equals("mProductos")){
+        } else if (modulo.equals("mProductos")) {
             vProductos = new VistaProducto();
+            ControladorProductos ctrlProductos = new ControladorProductos(vProductos);
             new CambiaPanel(vMenu.body, vProductos);
-            // Guardar el registro en un ArrayList <Intento 1>
-            
         }
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        if(ae.getActionCommand().equals("Inicio")){
+
+        if (ae.getActionCommand().equals("Inicio")) {
             mostrarModulos("mInicio");
-        }else if(ae.getActionCommand().equals("Productos")){
+        } else if (ae.getActionCommand().equals("Productos")) {
             mostrarModulos("mProductos");
         }
     }
- 
+
 }

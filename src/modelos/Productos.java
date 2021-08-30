@@ -11,28 +11,28 @@ package modelos;
  */
 public class Productos {
     private String codigoProducto;
-    private double unidades;
-    private String localizacion;
     private String categorias;
-    private int cantMin;
     private String proveedor;
-    private int cantMax;
     private String producto;
+    private String unidades;
+    private int cantMin;
+    private int cantMax;
     private String referencia;
-
+    private String localizacion;
+    
     public Productos() {
     }
 
-    public Productos(String codigoProducto, double unidades, String localizacion, String categorias, int cantMin, String proveedor, int cantMax, String producto, String referencia) {
+    public Productos(String codigoProducto, String categorias, String proveedor, String producto, String unidades, int cantMin, int cantMax, String referencia, String localizacion) {
         this.codigoProducto = codigoProducto;
-        this.unidades = unidades;
-        this.localizacion = localizacion;
         this.categorias = categorias;
-        this.cantMin = cantMin;
         this.proveedor = proveedor;
-        this.cantMax = cantMax;
         this.producto = producto;
+        this.unidades = unidades;
+        this.cantMin = cantMin;
+        this.cantMax = cantMax;
         this.referencia = referencia;
+        this.localizacion = localizacion;
     }
 
     public String getCodigoProducto() {
@@ -43,11 +43,11 @@ public class Productos {
         this.codigoProducto = codigoProducto;
     }
 
-    public double getUnidades() {
+    public String getUnidades() {
         return unidades;
     }
 
-    public void setUnidades(double unidades) {
+    public void setUnidades(String unidades) {
         this.unidades = unidades;
     }
 
