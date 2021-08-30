@@ -26,7 +26,6 @@ public class VistaProducto extends javax.swing.JPanel {
 
         header = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        nuevoProducto = new newscomponents.RSButtonIcon_new();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbProductos = new rojerusan.RSTableMetro();
@@ -48,7 +47,7 @@ public class VistaProducto extends javax.swing.JPanel {
         iconPass9 = new javax.swing.JLabel();
         iconPass10 = new javax.swing.JLabel();
         CantMin = new javax.swing.JTextField();
-        btnGuardarproduc = new javax.swing.JLabel();
+        nuevoProducto = new newscomponents.RSButtonIcon_new();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -68,16 +67,6 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.weightx = 20.0;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
         header.add(jLabel3, gridBagConstraints);
-
-        nuevoProducto.setBackground(new java.awt.Color(61, 137, 248));
-        nuevoProducto.setIcon(null);
-        nuevoProducto.setText("Nuevo Producto");
-        nuevoProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevoProductoActionPerformed(evt);
-            }
-        });
-        header.add(nuevoProducto, new java.awt.GridBagConstraints());
 
         add(header, java.awt.BorderLayout.PAGE_START);
 
@@ -147,7 +136,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -162,8 +151,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 45;
         gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 5);
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconUser1, gridBagConstraints);
 
         codProducto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
@@ -176,9 +164,9 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 197;
+        gridBagConstraints.ipadx = 175;
         gridBagConstraints.ipady = 22;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, -3, 12, 0);
         jPanel1.add(codProducto, gridBagConstraints);
 
         CantMax.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
@@ -203,9 +191,9 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipadx = 78;
         gridBagConstraints.ipady = 16;
-        gridBagConstraints.insets = new java.awt.Insets(20, 14, 12, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 22, 12, 0);
         jPanel1.add(iconPass4, gridBagConstraints);
 
         referencias.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
@@ -217,10 +205,11 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 175;
+        gridBagConstraints.ipadx = 225;
         gridBagConstraints.ipady = 22;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 30);
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 50);
         jPanel1.add(referencias, gridBagConstraints);
 
         iconPass5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -230,9 +219,8 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipadx = 45;
         gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(20, 29, 12, 0);
         jPanel1.add(iconPass5, gridBagConstraints);
 
@@ -243,7 +231,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipadx = 45;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconPass6, gridBagConstraints);
@@ -257,10 +245,11 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 175;
+        gridBagConstraints.ipadx = 225;
         gridBagConstraints.ipady = 22;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 30);
+        gridBagConstraints.insets = new java.awt.Insets(20, -5, 12, 50);
         jPanel1.add(productos, gridBagConstraints);
 
         cbUnidad.setForeground(new java.awt.Color(102, 102, 102));
@@ -279,7 +268,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, -4, 12, 0);
         jPanel1.add(cbUnidad, gridBagConstraints);
 
         iconRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -289,8 +278,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipadx = 45;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconRol, gridBagConstraints);
@@ -319,7 +307,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 175;
         gridBagConstraints.ipady = 22;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 30);
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 0);
         jPanel1.add(txtLocalizacion, gridBagConstraints);
 
         iconPass8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -329,7 +317,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipadx = 45;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconPass8, gridBagConstraints);
@@ -371,7 +359,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 11;
+        gridBagConstraints.ipadx = 45;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.insets = new java.awt.Insets(20, 22, 12, 0);
         jPanel1.add(iconPass9, gridBagConstraints);
@@ -383,10 +371,9 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 27;
+        gridBagConstraints.ipadx = 78;
         gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 21);
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconPass10, gridBagConstraints);
 
         CantMin.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
@@ -405,24 +392,18 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 26);
         jPanel1.add(CantMin, gridBagConstraints);
 
-        btnGuardarproduc.setBackground(new java.awt.Color(61, 137, 248));
-        btnGuardarproduc.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnGuardarproduc.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarproduc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnGuardarproduc.setText("Guardar Producto");
-        btnGuardarproduc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(8, 89, 165), 1, true));
-        btnGuardarproduc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarproduc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnGuardarproduc.setIconTextGap(1);
-        btnGuardarproduc.setOpaque(true);
+        nuevoProducto.setBackground(new java.awt.Color(61, 137, 248));
+        nuevoProducto.setText("Nuevo Producto");
+        nuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoProductoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.weightx = 25.0;
-        jPanel1.add(btnGuardarproduc, gridBagConstraints);
+        gridBagConstraints.gridwidth = 3;
+        jPanel1.add(nuevoProducto, gridBagConstraints);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -471,7 +452,6 @@ public class VistaProducto extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField CantMax;
     public javax.swing.JTextField CantMin;
-    public javax.swing.JLabel btnGuardarproduc;
     public javax.swing.JTextField categoriaProd;
     public javax.swing.JComboBox<String> cbUnidad;
     public javax.swing.JTextField codProducto;
