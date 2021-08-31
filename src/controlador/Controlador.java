@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import utilidades.CambiaPanel;
 import vistas.main.Menu;
 import vistas.modulos.Home;
+import vistas.modulos.VistaMovimiento;
 import vistas.modulos.VistaProducto;
 
 /**
@@ -23,6 +24,9 @@ public class Controlador implements ActionListener{
     
     /* PRODUCTOS */
     VistaProducto vProductos;
+    
+    /* MOVIMIENTOS */
+    VistaMovimiento vMovimientos;
 
     public Controlador(Menu vMenu) {
         this.vMenu = vMenu;
@@ -43,6 +47,9 @@ public class Controlador implements ActionListener{
         }else if(modulo.equals("mProductos")){
             vProductos = new VistaProducto();
             new CambiaPanel(vMenu.body, vProductos);
+        }else if(modulo.equals("mMovimientos")) {
+            vMovimientos = new VistaMovimiento();
+            new CambiaPanel(vMenu.body, vMovimientos);
         }
     }
 
@@ -53,6 +60,8 @@ public class Controlador implements ActionListener{
             mostrarModulos("mInicio");
         }else if(ae.getActionCommand().equals("Productos")){
             mostrarModulos("mProductos");
+        }else if(ae.getActionCommand().equals("Movimientos")) {
+            mostrarModulos("mMovimientos");
         }
     }
  

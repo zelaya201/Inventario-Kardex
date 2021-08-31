@@ -20,11 +20,13 @@ public class Menu extends javax.swing.JFrame {
 //        this.btnDevoSalidas.setVisible(false);
         this.btnHome.setActionCommand("Inicio");
         this.btnProducto.setActionCommand("Productos");
+        this.btnMovimiento.setActionCommand("Movimientos");
     }
 
     public void setControlador(Controlador control){
         this.btnHome.addActionListener(control);
         this.btnProducto.addActionListener(control);
+        this.btnMovimiento.addActionListener(control);
     }
     
     public void iniciar(){
