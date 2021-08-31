@@ -24,6 +24,9 @@ public class ControladorProductos implements ActionListener {
     private VistaProducto vProductos;
     private ArrayList<Productos> arrayProductos;
 
+    public ControladorProductos() {
+    }
+
     public ControladorProductos(VistaProducto vProductos) {
         this.vProductos = vProductos;
         md = new DefaultTableModel();
@@ -51,8 +54,8 @@ public class ControladorProductos implements ActionListener {
             String prove = this.vProductos.proveedor.getText();
             String produ = this.vProductos.productos.getText();
             String unidad = (String) this.vProductos.cbUnidad.getSelectedItem();
-            int cantMin = Integer.parseInt(this.vProductos.CantMin.getText());
-            int cantMax = Integer.parseInt(this.vProductos.CantMax.getText());
+            String cantMin = this.vProductos.CantMin.getText();
+            String cantMax = this.vProductos.CantMax.getText();
             String ref = this.vProductos.referencias.getText();
             String local = this.vProductos.txtLocalizacion.getText();
             
@@ -90,6 +93,7 @@ public class ControladorProductos implements ActionListener {
         this.vProductos.CantMax.setText("");
         this.vProductos.referencias.setText("");
         this.vProductos.txtLocalizacion.setText("");
+        vProductos.enabledbt();
     }
 
 }

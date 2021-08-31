@@ -10,20 +10,21 @@ package modelos;
  * @author Julio
  */
 public class Productos {
+
     private String codigoProducto;
     private String categorias;
     private String proveedor;
     private String producto;
     private String unidades;
-    private int cantMin;
-    private int cantMax;
+    private String cantMin;
+    private String cantMax;
     private String referencia;
     private String localizacion;
-    
+
     public Productos() {
     }
 
-    public Productos(String codigoProducto, String categorias, String proveedor, String producto, String unidades, int cantMin, int cantMax, String referencia, String localizacion) {
+    public Productos(String codigoProducto, String categorias, String proveedor, String producto, String unidades, String cantMin, String cantMax, String referencia, String localizacion) {
         this.codigoProducto = codigoProducto;
         this.categorias = categorias;
         this.proveedor = proveedor;
@@ -67,12 +68,20 @@ public class Productos {
         this.categorias = categorias;
     }
 
-    public int getCantMin() {
+    public String getCantMin() {
         return cantMin;
     }
 
-    public void setCantMin(int cantMin) {
+    public void setCantMin(String cantMin) {
         this.cantMin = cantMin;
+    }
+
+    public String getCantMax() {
+        return cantMax;
+    }
+
+    public void setCantMax(String cantMax) {
+        this.cantMax = cantMax;
     }
 
     public String getProveedor() {
@@ -81,14 +90,6 @@ public class Productos {
 
     public void setProveedor(String proveedor) {
         this.proveedor = proveedor;
-    }
-
-    public int getCantMax() {
-        return cantMax;
-    }
-
-    public void setCantMax(int cantMax) {
-        this.cantMax = cantMax;
     }
 
     public String getProducto() {
@@ -106,6 +107,5 @@ public class Productos {
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
-    
-    
+
 }

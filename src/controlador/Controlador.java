@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -36,6 +31,7 @@ public class Controlador implements ActionListener {
         this.vMenu.setControlador(this);
         this.vMenu.iniciar();
         vHome = new Home();
+        vProductos = new VistaProducto();
         new CambiaPanel(vMenu.body, vHome);
     }
 
@@ -48,7 +44,7 @@ public class Controlador implements ActionListener {
             vHome = new Home();
             new CambiaPanel(vMenu.body, vHome);
         } else if (modulo.equals("mProductos")) {
-            vProductos = new VistaProducto();
+//            vProductos = new VistaProducto();
             ControladorProductos ctrlProductos = new ControladorProductos(vProductos);
             new CambiaPanel(vMenu.body, vProductos);
         }

@@ -4,7 +4,6 @@ import controlador.Controlador;
 import javax.swing.JOptionPane;
 
 //import utilidades.TextPrompt;
-
 public class VistaProducto extends javax.swing.JPanel {
 
     public VistaProducto() {
@@ -12,20 +11,19 @@ public class VistaProducto extends javax.swing.JPanel {
 //        this.btnProducto.setActionCommand("activeProduct");
         btnProducto.setEnabled(false);
     }
-    
-    public void enabledbt(){
-    
-        if(!codProducto.getText().isEmpty() && !CantMax.getText().isEmpty() && !referencias.getText().isEmpty() && !productos.getText().isEmpty() && !txtLocalizacion.getText().isEmpty() && !categoriaProd.getText().isEmpty() && !proveedor.getText().isEmpty() && !CantMin.getText().isEmpty()){
-        btnProducto.setEnabled(true);
-        }else{
-        btnProducto.setEnabled(false);
+
+    public void enabledbt() {
+
+        if (!codProducto.getText().isEmpty() && !CantMax.getText().isEmpty() && !referencias.getText().isEmpty() && !productos.getText().isEmpty() && !txtLocalizacion.getText().isEmpty() && !categoriaProd.getText().isEmpty() && !proveedor.getText().isEmpty() && !CantMin.getText().isEmpty()) {
+            btnProducto.setEnabled(true);
+        } else {
+            btnProducto.setEnabled(false);
         }
     }
 
 //    public void setControlador(Controlador control){
 //        this.btnProducto.addActionListener(control); 
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,7 +188,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 175;
         gridBagConstraints.ipady = 22;
-        gridBagConstraints.insets = new java.awt.Insets(20, -3, 12, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 0);
         jPanel1.add(codProducto, gridBagConstraints);
 
         CantMax.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
@@ -312,7 +310,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipadx = 14;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconPass7, gridBagConstraints);
@@ -510,18 +508,24 @@ public class VistaProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnProductoActionPerformed
 
     private void codProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codProductoKeyTyped
-       char val = evt.getKeyChar();
-        if(val < '0' || val > '9') evt.consume();
+        char val = evt.getKeyChar();
+        if (val < '0' || val > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_codProductoKeyTyped
 
     private void CantMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantMinKeyTyped
         char val = evt.getKeyChar();
-        if(val < '0' || val > '9') evt.consume();
+        if (val < '0' || val > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_CantMinKeyTyped
 
     private void CantMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantMaxKeyTyped
         char val = evt.getKeyChar();
-        if(val < '0' || val > '9') evt.consume();
+        if (val < '0' || val > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_CantMaxKeyTyped
 
     private void codProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codProductoKeyReleased
