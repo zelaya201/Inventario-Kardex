@@ -39,7 +39,6 @@ public class VistaProducto extends javax.swing.JPanel {
         iconPass5 = new javax.swing.JLabel();
         iconPass6 = new javax.swing.JLabel();
         productos = new javax.swing.JTextField();
-        cbUnidad = new javax.swing.JComboBox<>();
         iconRol = new javax.swing.JLabel();
         iconPass7 = new javax.swing.JLabel();
         txtLocalizacion = new javax.swing.JTextField();
@@ -50,6 +49,7 @@ public class VistaProducto extends javax.swing.JPanel {
         iconPass10 = new javax.swing.JLabel();
         CantMin = new javax.swing.JTextField();
         btnProducto = new newscomponents.RSButtonIcon_new();
+        cbUnidad = new RSMaterialComponent.RSComboBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -257,25 +257,6 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 2, 47);
         jPanel1.add(productos, gridBagConstraints);
 
-        cbUnidad.setForeground(new java.awt.Color(102, 102, 102));
-        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gramos", "LIbras", "Kilogramos", "Toneladas", "Unidades", "Litros", "Galones", "Barriles", "Latas", "Cajas", "Metros Cubicos", "Otros" }));
-        cbUnidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        cbUnidad.setFocusable(false);
-        cbUnidad.setLightWeightPopupEnabled(false);
-        cbUnidad.setRequestFocusEnabled(false);
-        cbUnidad.setVerifyInputWhenFocusTarget(false);
-        cbUnidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbUnidadActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(20, -4, 12, 0);
-        jPanel1.add(cbUnidad, gridBagConstraints);
-
         iconRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconRol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/purchase_orderB_22px.png"))); // NOI18N
         iconRol.setText("Unidad");
@@ -415,6 +396,22 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(4, 3, 4, 3);
         jPanel1.add(btnProducto, gridBagConstraints);
 
+        cbUnidad.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))))));
+        cbUnidad.setForeground(new java.awt.Color(51, 51, 51));
+        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramos", "Libras", "Toneladas", "Gramos", "Unidades", "Litros", "Galones", "Barriles", "Metros", "Metros Cubicos", "Otro" }));
+        cbUnidad.setColorArrow(new java.awt.Color(58, 66, 226));
+        cbUnidad.setColorBorde(new java.awt.Color(204, 204, 204));
+        cbUnidad.setColorFondo(new java.awt.Color(255, 255, 255));
+        cbUnidad.setColorSeleccion(new java.awt.Color(255, 255, 255));
+        cbUnidad.setColorSeleccionTXT(new java.awt.Color(58, 66, 226));
+        cbUnidad.setConBorde(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, -4, 12, 0);
+        jPanel1.add(cbUnidad, gridBagConstraints);
+
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -433,10 +430,6 @@ public class VistaProducto extends javax.swing.JPanel {
     private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_productosActionPerformed
-
-    private void cbUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUnidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbUnidadActionPerformed
 
     private void txtLocalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalizacionActionPerformed
         // TODO add your handling code here:
@@ -464,7 +457,7 @@ public class VistaProducto extends javax.swing.JPanel {
     public javax.swing.JTextField CantMin;
     public newscomponents.RSButtonIcon_new btnProducto;
     public javax.swing.JTextField categoriaProd;
-    public javax.swing.JComboBox<String> cbUnidad;
+    public RSMaterialComponent.RSComboBox cbUnidad;
     public javax.swing.JTextField codProducto;
     public javax.swing.JPanel header;
     public javax.swing.JLabel iconPass10;
