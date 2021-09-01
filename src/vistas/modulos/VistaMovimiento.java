@@ -8,10 +8,14 @@ public class VistaMovimiento extends javax.swing.JPanel {
 
     public VistaMovimiento() {
         initComponents();
+        this.btnGuardar.setActionCommand("guardarMovimiento");
+        new TextPrompt("Buscar productos", tfBusqueda);
     }
 
     public void setControlador(Controlador control){
-  
+        this.btnGuardar.addActionListener(control);
+        this.tfBusqueda.addKeyListener(control);
+        this.tbProductos.addMouseListener(control);
     }
 
     /**
@@ -29,23 +33,23 @@ public class VistaMovimiento extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jpDetallesP = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        rSTextFieldMaterial1 = new RSMaterialComponent.RSTextFieldMaterial();
+        tfValor = new RSMaterialComponent.RSTextFieldMaterial();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        rSComboBox1 = new RSMaterialComponent.RSComboBox();
-        rSComboBox2 = new RSMaterialComponent.RSComboBox();
-        rSTextFieldMaterial2 = new RSMaterialComponent.RSTextFieldMaterial();
+        cbTipo = new RSMaterialComponent.RSComboBox();
+        cbOperacion = new RSMaterialComponent.RSComboBox();
+        tfCodigo = new RSMaterialComponent.RSTextFieldMaterial();
         jLabel7 = new javax.swing.JLabel();
-        rSDateChooser1 = new rojeru_san.rsdate.RSDateChooser();
-        rSTextFieldMaterial3 = new RSMaterialComponent.RSTextFieldMaterial();
+        dcFecha = new rojeru_san.rsdate.RSDateChooser();
+        tfProducto = new RSMaterialComponent.RSTextFieldMaterial();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        rSTextFieldMaterial4 = new RSMaterialComponent.RSTextFieldMaterial();
-        rSTextFieldMaterial5 = new RSMaterialComponent.RSTextFieldMaterial();
-        rSButtonMaterialRipple1 = new RSMaterialComponent.RSButtonMaterialRipple();
-        rSButtonMaterialRipple2 = new RSMaterialComponent.RSButtonMaterialRipple();
+        tfCantidad = new RSMaterialComponent.RSTextFieldMaterial();
+        tfValorUnitario = new RSMaterialComponent.RSTextFieldMaterial();
+        btnCancelar = new RSMaterialComponent.RSButtonMaterialRipple();
+        btnGuardar = new RSMaterialComponent.RSButtonMaterialRipple();
         jpBuscarP = new javax.swing.JPanel();
         tfBusqueda = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -93,140 +97,145 @@ public class VistaMovimiento extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 0, 0);
         jpDetallesP.add(jLabel5, gridBagConstraints);
 
-        rSTextFieldMaterial1.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial1.setColorMaterial(new java.awt.Color(153, 153, 153));
-        rSTextFieldMaterial1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        rSTextFieldMaterial1.setPhColor(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial1.setPlaceholder("");
-        rSTextFieldMaterial1.setPreferredSize(new java.awt.Dimension(115, 42));
-        rSTextFieldMaterial1.addActionListener(new java.awt.event.ActionListener() {
+        tfValor.setForeground(new java.awt.Color(51, 51, 51));
+        tfValor.setColorMaterial(new java.awt.Color(153, 153, 153));
+        tfValor.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfValor.setPhColor(new java.awt.Color(51, 51, 51));
+        tfValor.setPlaceholder("");
+        tfValor.setPreferredSize(new java.awt.Dimension(130, 42));
+        tfValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSTextFieldMaterial1ActionPerformed(evt);
+                tfValorActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 15000.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 33, 0, 0);
-        jpDetallesP.add(rSTextFieldMaterial1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        jpDetallesP.add(tfValor, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Fecha");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 6.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 26, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 8, 0, 0);
         jpDetallesP.add(jLabel2, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Operacion");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 6.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 13, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 191, 0, 0);
         jpDetallesP.add(jLabel4, gridBagConstraints);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Cod. Movimiento");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 12, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jpDetallesP.add(jLabel6, gridBagConstraints);
 
-        rSComboBox1.setForeground(new java.awt.Color(184, 184, 184));
-        rSComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entrada", "Salida" }));
-        rSComboBox1.setColorArrow(new java.awt.Color(153, 153, 153));
-        rSComboBox1.setColorBorde(new java.awt.Color(204, 204, 204));
-        rSComboBox1.setColorFondo(new java.awt.Color(255, 255, 255));
-        rSComboBox1.setColorListaItemsTXT(new java.awt.Color(184, 184, 184));
-        rSComboBox1.setColorSeleccion(new java.awt.Color(102, 102, 102));
-        rSComboBox1.setConBorde(true);
-        rSComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rSComboBox1.setPreferredSize(new java.awt.Dimension(140, 32));
+        cbTipo.setForeground(new java.awt.Color(184, 184, 184));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Entrada", "Salida" }));
+        cbTipo.setColorArrow(new java.awt.Color(153, 153, 153));
+        cbTipo.setColorBorde(new java.awt.Color(204, 204, 204));
+        cbTipo.setColorFondo(new java.awt.Color(255, 255, 255));
+        cbTipo.setColorListaItemsTXT(new java.awt.Color(184, 184, 184));
+        cbTipo.setColorSeleccion(new java.awt.Color(102, 102, 102));
+        cbTipo.setConBorde(true);
+        cbTipo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbTipo.setPreferredSize(new java.awt.Dimension(140, 32));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weighty = 8.9;
-        gridBagConstraints.insets = new java.awt.Insets(11, 4, 0, 0);
-        jpDetallesP.add(rSComboBox1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 15, 0, 0);
+        jpDetallesP.add(cbTipo, gridBagConstraints);
 
-        rSComboBox2.setForeground(new java.awt.Color(184, 184, 184));
-        rSComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entrada", "Salida" }));
-        rSComboBox2.setColorArrow(new java.awt.Color(153, 153, 153));
-        rSComboBox2.setColorBorde(new java.awt.Color(204, 204, 204));
-        rSComboBox2.setColorFondo(new java.awt.Color(255, 255, 255));
-        rSComboBox2.setColorListaItemsTXT(new java.awt.Color(184, 184, 184));
-        rSComboBox2.setColorSeleccion(new java.awt.Color(102, 102, 102));
-        rSComboBox2.setConBorde(true);
-        rSComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rSComboBox2.setPreferredSize(new java.awt.Dimension(140, 32));
+        cbOperacion.setForeground(new java.awt.Color(184, 184, 184));
+        cbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Entrada", "Salida" }));
+        cbOperacion.setColorArrow(new java.awt.Color(153, 153, 153));
+        cbOperacion.setColorBorde(new java.awt.Color(204, 204, 204));
+        cbOperacion.setColorFondo(new java.awt.Color(255, 255, 255));
+        cbOperacion.setColorListaItemsTXT(new java.awt.Color(184, 184, 184));
+        cbOperacion.setColorSeleccion(new java.awt.Color(102, 102, 102));
+        cbOperacion.setConBorde(true);
+        cbOperacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbOperacion.setPreferredSize(new java.awt.Dimension(140, 32));
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weighty = 8.9;
-        gridBagConstraints.insets = new java.awt.Insets(11, 12, 0, 0);
-        jpDetallesP.add(rSComboBox2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 189, 0, 0);
+        jpDetallesP.add(cbOperacion, gridBagConstraints);
 
-        rSTextFieldMaterial2.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial2.setColorMaterial(new java.awt.Color(153, 153, 153));
-        rSTextFieldMaterial2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        rSTextFieldMaterial2.setPhColor(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial2.setPlaceholder("");
-        rSTextFieldMaterial2.setPreferredSize(new java.awt.Dimension(150, 42));
-        rSTextFieldMaterial2.addActionListener(new java.awt.event.ActionListener() {
+        tfCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        tfCodigo.setColorMaterial(new java.awt.Color(153, 153, 153));
+        tfCodigo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfCodigo.setPhColor(new java.awt.Color(51, 51, 51));
+        tfCodigo.setPlaceholder("");
+        tfCodigo.setPreferredSize(new java.awt.Dimension(130, 42));
+        tfCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSTextFieldMaterial2ActionPerformed(evt);
+                tfCodigoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 10.4;
-        gridBagConstraints.insets = new java.awt.Insets(0, 7, 0, 0);
-        jpDetallesP.add(rSTextFieldMaterial2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 18);
+        jpDetallesP.add(tfCodigo, gridBagConstraints);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Tipo de movimiento");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 6.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 4, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 0, 0);
         jpDetallesP.add(jLabel7, gridBagConstraints);
 
-        rSDateChooser1.setForeground(new java.awt.Color(184, 184, 184));
-        rSDateChooser1.setColorBackground(new java.awt.Color(204, 204, 204));
-        rSDateChooser1.setColorButtonHover(new java.awt.Color(153, 153, 153));
-        rSDateChooser1.setColorForeground(new java.awt.Color(184, 184, 184));
-        rSDateChooser1.setFuente(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rSDateChooser1.setPreferredSize(new java.awt.Dimension(180, 32));
+        dcFecha.setForeground(new java.awt.Color(184, 184, 184));
+        dcFecha.setColorBackground(new java.awt.Color(204, 204, 204));
+        dcFecha.setColorButtonHover(new java.awt.Color(153, 153, 153));
+        dcFecha.setColorForeground(new java.awt.Color(184, 184, 184));
+        dcFecha.setFuente(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        dcFecha.setPreferredSize(new java.awt.Dimension(180, 32));
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(11, 28, 0, 0);
-        jpDetallesP.add(rSDateChooser1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 8, 0, 0);
+        jpDetallesP.add(dcFecha, gridBagConstraints);
 
-        rSTextFieldMaterial3.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial3.setColorMaterial(new java.awt.Color(153, 153, 153));
-        rSTextFieldMaterial3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        rSTextFieldMaterial3.setPhColor(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial3.setPlaceholder("");
-        rSTextFieldMaterial3.addActionListener(new java.awt.event.ActionListener() {
+        tfProducto.setForeground(new java.awt.Color(51, 51, 51));
+        tfProducto.setColorMaterial(new java.awt.Color(153, 153, 153));
+        tfProducto.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfProducto.setPhColor(new java.awt.Color(51, 51, 51));
+        tfProducto.setPlaceholder("");
+        tfProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSTextFieldMaterial3ActionPerformed(evt);
+                tfProductoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -237,7 +246,7 @@ public class VistaMovimiento extends javax.swing.JPanel {
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 15000.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 7, 0, 0);
-        jpDetallesP.add(rSTextFieldMaterial3, gridBagConstraints);
+        jpDetallesP.add(tfProducto, gridBagConstraints);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Valor unitario");
@@ -246,17 +255,18 @@ public class VistaMovimiento extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weighty = 10.0;
-        gridBagConstraints.insets = new java.awt.Insets(20, 136, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 82, 0, 0);
         jpDetallesP.add(jLabel8, gridBagConstraints);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Cantidad");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weighty = 10.0;
-        gridBagConstraints.insets = new java.awt.Insets(20, 55, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 226, 0, 0);
         jpDetallesP.add(jLabel9, gridBagConstraints);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -267,39 +277,18 @@ public class VistaMovimiento extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weighty = 10.0;
-        gridBagConstraints.insets = new java.awt.Insets(20, 197, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
         jpDetallesP.add(jLabel10, gridBagConstraints);
 
-        rSTextFieldMaterial4.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial4.setColorMaterial(new java.awt.Color(153, 153, 153));
-        rSTextFieldMaterial4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        rSTextFieldMaterial4.setPhColor(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial4.setPlaceholder("");
-        rSTextFieldMaterial4.setPreferredSize(new java.awt.Dimension(110, 42));
-        rSTextFieldMaterial4.addActionListener(new java.awt.event.ActionListener() {
+        tfCantidad.setForeground(new java.awt.Color(51, 51, 51));
+        tfCantidad.setColorMaterial(new java.awt.Color(153, 153, 153));
+        tfCantidad.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfCantidad.setPhColor(new java.awt.Color(51, 51, 51));
+        tfCantidad.setPlaceholder("");
+        tfCantidad.setPreferredSize(new java.awt.Dimension(102, 42));
+        tfCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSTextFieldMaterial4ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 15000.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 55, 0, 0);
-        jpDetallesP.add(rSTextFieldMaterial4, gridBagConstraints);
-
-        rSTextFieldMaterial5.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial5.setColorMaterial(new java.awt.Color(153, 153, 153));
-        rSTextFieldMaterial5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        rSTextFieldMaterial5.setPhColor(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial5.setPlaceholder("");
-        rSTextFieldMaterial5.setPreferredSize(new java.awt.Dimension(110, 42));
-        rSTextFieldMaterial5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSTextFieldMaterial5ActionPerformed(evt);
+                tfCantidadActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -309,31 +298,57 @@ public class VistaMovimiento extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 15000.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 136, 0, 0);
-        jpDetallesP.add(rSTextFieldMaterial5, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 226, 0, 0);
+        jpDetallesP.add(tfCantidad, gridBagConstraints);
 
-        rSButtonMaterialRipple1.setBackground(new java.awt.Color(102, 102, 102));
-        rSButtonMaterialRipple1.setText("Eliminar movimiento");
-        rSButtonMaterialRipple1.setBackgroundHover(new java.awt.Color(120, 120, 120));
-        rSButtonMaterialRipple1.setPreferredSize(new java.awt.Dimension(165, 40));
+        tfValorUnitario.setForeground(new java.awt.Color(51, 51, 51));
+        tfValorUnitario.setColorMaterial(new java.awt.Color(153, 153, 153));
+        tfValorUnitario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        tfValorUnitario.setPhColor(new java.awt.Color(51, 51, 51));
+        tfValorUnitario.setPlaceholder("");
+        tfValorUnitario.setPreferredSize(new java.awt.Dimension(110, 42));
+        tfValorUnitario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfValorUnitarioActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.insets = new java.awt.Insets(60, 151, 0, 20);
-        jpDetallesP.add(rSButtonMaterialRipple1, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 15000.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 82, 0, 0);
+        jpDetallesP.add(tfValorUnitario, gridBagConstraints);
 
-        rSButtonMaterialRipple2.setText("Guardar movimiento");
-        rSButtonMaterialRipple2.setPreferredSize(new java.awt.Dimension(165, 40));
+        btnCancelar.setBackground(new java.awt.Color(102, 102, 102));
+        btnCancelar.setText("Cancelar movimiento");
+        btnCancelar.setBackgroundHover(new java.awt.Color(120, 120, 120));
+        btnCancelar.setPreferredSize(new java.awt.Dimension(168, 40));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.insets = new java.awt.Insets(60, 309, 0, 0);
+        jpDetallesP.add(btnCancelar, gridBagConstraints);
+
+        btnGuardar.setText("Guardar movimiento");
+        btnGuardar.setPreferredSize(new java.awt.Dimension(165, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.weightx = 0.7;
-        gridBagConstraints.insets = new java.awt.Insets(60, 325, 0, 0);
-        jpDetallesP.add(rSButtonMaterialRipple2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(60, 310, 0, 0);
+        jpDetallesP.add(btnGuardar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -455,7 +470,7 @@ public class VistaMovimiento extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cod. Movimiento", "Fecha", "Concepto", "Producto", "Cantidad", "Valor Unitario", "Valor"
+                "Cod. Movimiento", "Fecha", "Concepto", "Producto", "Valor Unitario", "Cantidad", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -502,28 +517,44 @@ public class VistaMovimiento extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rSTextFieldMaterial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSTextFieldMaterial1ActionPerformed
+    private void tfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSTextFieldMaterial1ActionPerformed
+    }//GEN-LAST:event_tfValorActionPerformed
 
-    private void rSTextFieldMaterial2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSTextFieldMaterial2ActionPerformed
+    private void tfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSTextFieldMaterial2ActionPerformed
+    }//GEN-LAST:event_tfCodigoActionPerformed
 
-    private void rSTextFieldMaterial3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSTextFieldMaterial3ActionPerformed
+    private void tfProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSTextFieldMaterial3ActionPerformed
+    }//GEN-LAST:event_tfProductoActionPerformed
 
-    private void rSTextFieldMaterial4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSTextFieldMaterial4ActionPerformed
+    private void tfCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSTextFieldMaterial4ActionPerformed
+    }//GEN-LAST:event_tfCantidadActionPerformed
 
-    private void rSTextFieldMaterial5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSTextFieldMaterial5ActionPerformed
+    private void tfValorUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfValorUnitarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSTextFieldMaterial5ActionPerformed
+    }//GEN-LAST:event_tfValorUnitarioActionPerformed
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        tfCodigo.setText("");
+        dcFecha.setDatoFecha(null);
+        cbTipo.setSelectedIndex(0);
+        cbOperacion.setSelectedIndex(0);
+        tfProducto.setText("");
+        tfValorUnitario.setText("");
+        tfCantidad.setText("");
+        tfValor.setText("");
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private RSMaterialComponent.RSButtonMaterialRipple btnCancelar;
+    private RSMaterialComponent.RSButtonMaterialRipple btnGuardar;
+    public RSMaterialComponent.RSComboBox cbOperacion;
+    public RSMaterialComponent.RSComboBox cbTipo;
+    public rojeru_san.rsdate.RSDateChooser dcFecha;
     public javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -540,18 +571,13 @@ public class VistaMovimiento extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jpBuscarP;
     private javax.swing.JPanel jpDetallesP;
-    private RSMaterialComponent.RSButtonMaterialRipple rSButtonMaterialRipple1;
-    private RSMaterialComponent.RSButtonMaterialRipple rSButtonMaterialRipple2;
-    private RSMaterialComponent.RSComboBox rSComboBox1;
-    private RSMaterialComponent.RSComboBox rSComboBox2;
-    private rojeru_san.rsdate.RSDateChooser rSDateChooser1;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial1;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial2;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial3;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial4;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial5;
     public rojerusan.RSTableMetro tbMovimiento;
     public rojerusan.RSTableMetro tbProductos;
-    private javax.swing.JTextField tfBusqueda;
+    public javax.swing.JTextField tfBusqueda;
+    public RSMaterialComponent.RSTextFieldMaterial tfCantidad;
+    public RSMaterialComponent.RSTextFieldMaterial tfCodigo;
+    public RSMaterialComponent.RSTextFieldMaterial tfProducto;
+    public RSMaterialComponent.RSTextFieldMaterial tfValor;
+    public RSMaterialComponent.RSTextFieldMaterial tfValorUnitario;
     // End of variables declaration//GEN-END:variables
 }
