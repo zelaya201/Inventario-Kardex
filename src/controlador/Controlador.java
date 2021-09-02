@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.DecimalFormat;
@@ -32,7 +33,7 @@ import vistas.modulos.VistaProducto;
  *
  * @author Mario Zelaya
  */
-public class Controlador implements ActionListener, MouseListener, KeyListener, ItemListener {
+public class Controlador extends MouseAdapter implements ActionListener, MouseListener, KeyListener, ItemListener {
     
     private Menu vMenu;
     private Home vHome;
@@ -41,6 +42,11 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
     
     /* PRODUCTOS */
     VistaProducto vProductos;
+    ArrayList<Productos> productos = new ArrayList();
+       
+    //String codigoProducto, String categorias, String proveedor, String producto, String unidades, int cantMin, int cantMax, String referencia, String localizacion
+    Productos p1 = new Productos("001", "TELEFONÍA", "FACELA S.A DE C.V", "LAPIZ FACELA BUSCAMINAS", "UNIDADES", 5, 10, "M-10", "STAND-2");
+    Productos p2 = new Productos("002", "TELEFONÍA", "INSDUSTRIAS TODO MADERA S.A. DE S.V", "SILLA", "UNIDAD", 10, 40, "M-4", "SALA DE VENTAS");
     
     /* REPORTE KARDEX */
     VistaKardex vKardex;
@@ -56,6 +62,8 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
         this.vMenu.iniciar();
         vHome = new Home();
         new CambiaPanel(vMenu.body, vHome);
+        this.productos.add(p1);
+        this.productos.add(p2);
     }
     
     public void mostrarMenu(){
@@ -71,6 +79,8 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
             new CambiaPanel(vMenu.body, vProductos);
         }else if(modulo.equals("mKardex")){
             vKardex = new VistaKardex();
+            vKardex.setControlador(this);
+            principalOn = "Kardex";
             new CambiaPanel(vMenu.body, vKardex);
         }else if(modulo.equals("mMovimientos")) {
             vMovimientos = new VistaMovimiento();
@@ -112,6 +122,17 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
             tabla.setModel(modelo);
         }
     }
+    
+    public void mostrarBusqueda(int i){
+        if(principalOn.equals("Kardex")){
+            
+            vKardex.lbArticulo.setText(productos.get(i).getProducto());
+            
+            modelo = (DefaultTableModel) vKardex.tablaDetalles.getModel();
+            
+            
+        }
+    }
 
     public void eventosBotones(ActionEvent e){
         if (principalOn.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
@@ -138,6 +159,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
         }
     }
     
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         
@@ -152,6 +174,25 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
         }else if(ae.getActionCommand().equals("guardarMovimiento")){
             eventosBotones(ae);
         }
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        
+        if(principalOn.equals("Kardex")){
+            for (int i = 0; i < productos.size(); i++) {
+                if (productos.get(i).getCodigoProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar())) {
+                    mostrarBusqueda(i);
+                    break;
+                } else {
+                    System.out.println("No existe");
+                }
+            }
+        }
+        
+        
+        
+        
     }
 
     @Override
@@ -181,17 +222,12 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void keyPressed(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

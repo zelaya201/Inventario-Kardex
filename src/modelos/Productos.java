@@ -15,7 +15,7 @@ public class Productos {
     private String codigoProducto;
     private String categorias;
     private String proveedor;
-    private String producto;
+    private String producto; //Nombre del Producto?
     private String unidades;
     private int cantMin;
     private int cantMax;

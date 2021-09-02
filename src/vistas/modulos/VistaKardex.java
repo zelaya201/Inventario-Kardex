@@ -9,11 +9,13 @@ public class VistaKardex extends javax.swing.JPanel {
     public VistaKardex() {
         initComponents();
         new TextPrompt("Buscar producto (por ID, nombre de artículo)", tfBusqueda);
+        this.btnExportPDF.setActionCommand("ExportPDF");
                
     }
     
     public void setControlador(Controlador control){
- 
+        this.tfBusqueda.addKeyListener(control);
+        this.btnExportPDF.addActionListener(control);
     }
     
 
@@ -31,16 +33,16 @@ public class VistaKardex extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         tfBusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        rSButtonMaterialOne1 = new RSMaterialComponent.RSButtonMaterialOne();
+        btnExportPDF = new RSMaterialComponent.RSButtonMaterialOne();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lbProveedor = new javax.swing.JLabel();
+        lbArticulo = new javax.swing.JLabel();
+        lbUnidad = new javax.swing.JLabel();
+        lbCantMax = new javax.swing.JLabel();
+        lbReferencia = new javax.swing.JLabel();
+        lbUbicacion = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -52,19 +54,19 @@ public class VistaKardex extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        tablaUsuarios8 = new rojerusan.RSTableMetro();
+        tablaDetalles = new rojerusan.RSTableMetro();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        tablaUsuarios9 = new rojerusan.RSTableMetro();
+        tablaEntradas = new rojerusan.RSTableMetro();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        tablaUsuarios10 = new rojerusan.RSTableMetro();
+        tablaSalidas = new rojerusan.RSTableMetro();
         jLabel13 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        tablaUsuarios11 = new rojerusan.RSTableMetro();
+        tablaExistencias = new rojerusan.RSTableMetro();
         jLabel16 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -119,15 +121,15 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.ipady = 11;
         jPanel3.add(jLabel1, gridBagConstraints);
 
-        rSButtonMaterialOne1.setBackground(new java.awt.Color(61, 137, 248));
-        rSButtonMaterialOne1.setText("Exportar PDF");
-        rSButtonMaterialOne1.setBackgroundHover(new java.awt.Color(39, 116, 229));
+        btnExportPDF.setBackground(new java.awt.Color(61, 137, 248));
+        btnExportPDF.setText("Exportar PDF");
+        btnExportPDF.setBackgroundHover(new java.awt.Color(39, 116, 229));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.weightx = 20.0;
-        jPanel3.add(rSButtonMaterialOne1, gridBagConstraints);
+        jPanel3.add(btnExportPDF, gridBagConstraints);
 
         add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
@@ -140,7 +142,7 @@ public class VistaKardex extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("10");
+        jLabel4.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -150,9 +152,9 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
         jPanel2.add(jLabel4, gridBagConstraints);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("INDUSTRIAS TODO MADERA S. A.");
+        lbProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbProveedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbProveedor.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -160,22 +162,22 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel5, gridBagConstraints);
+        jPanel2.add(lbProveedor, gridBagConstraints);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("BOLSA DE REGALO GRANDE");
+        lbArticulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbArticulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbArticulo.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 10;
-        jPanel2.add(jLabel9, gridBagConstraints);
+        jPanel2.add(lbArticulo, gridBagConstraints);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("UNIDAD");
+        lbUnidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbUnidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbUnidad.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -184,11 +186,11 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
-        jPanel2.add(jLabel11, gridBagConstraints);
+        jPanel2.add(lbUnidad, gridBagConstraints);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("40");
+        lbCantMax.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbCantMax.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCantMax.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -196,22 +198,22 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 10;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
-        jPanel2.add(jLabel12, gridBagConstraints);
+        jPanel2.add(lbCantMax, gridBagConstraints);
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("M-4");
+        lbReferencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbReferencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReferencia.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 10;
-        jPanel2.add(jLabel14, gridBagConstraints);
+        jPanel2.add(lbReferencia, gridBagConstraints);
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("SALA DE VENTAS");
+        lbUbicacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbUbicacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbUbicacion.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -219,7 +221,7 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel15, gridBagConstraints);
+        jPanel2.add(lbUbicacion, gridBagConstraints);
 
         jLabel21.setBackground(new java.awt.Color(61, 137, 248));
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -338,7 +340,7 @@ public class VistaKardex extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.BorderLayout());
@@ -348,10 +350,10 @@ public class VistaKardex extends javax.swing.JPanel {
         jScrollPane10.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane10.setOpaque(false);
 
-        tablaUsuarios8.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
-        tablaUsuarios8.setForeground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios8.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDetalles.setBackground(new java.awt.Color(255, 255, 255));
+        tablaDetalles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaDetalles.setForeground(new java.awt.Color(255, 255, 255));
+        tablaDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -372,33 +374,33 @@ public class VistaKardex extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaUsuarios8.setAltoHead(30);
-        tablaUsuarios8.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
-        tablaUsuarios8.setColorBordeFilas(new java.awt.Color(243, 243, 243));
-        tablaUsuarios8.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        tablaUsuarios8.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
-        tablaUsuarios8.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
-        tablaUsuarios8.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
-        tablaUsuarios8.setColorForegroundHead(new java.awt.Color(0, 0, 0));
-        tablaUsuarios8.setColorSelBackgound(new java.awt.Color(240, 240, 240));
-        tablaUsuarios8.setColorSelForeground(new java.awt.Color(51, 51, 51));
-        tablaUsuarios8.setFocusable(false);
-        tablaUsuarios8.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios8.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios8.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios8.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        tablaUsuarios8.setGridColor(new java.awt.Color(204, 204, 204));
-        tablaUsuarios8.setGrosorBordeFilas(0);
-        tablaUsuarios8.setGrosorBordeHead(0);
-        tablaUsuarios8.setMultipleSeleccion(false);
-        tablaUsuarios8.setRowHeight(40);
-        tablaUsuarios8.getTableHeader().setResizingAllowed(false);
-        tablaUsuarios8.getTableHeader().setReorderingAllowed(false);
-        jScrollPane10.setViewportView(tablaUsuarios8);
-        if (tablaUsuarios8.getColumnModel().getColumnCount() > 0) {
-            tablaUsuarios8.getColumnModel().getColumn(0).setResizable(false);
-            tablaUsuarios8.getColumnModel().getColumn(1).setResizable(false);
-            tablaUsuarios8.getColumnModel().getColumn(2).setResizable(false);
+        tablaDetalles.setAltoHead(30);
+        tablaDetalles.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaDetalles.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaDetalles.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaDetalles.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaDetalles.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaDetalles.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaDetalles.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaDetalles.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaDetalles.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaDetalles.setFocusable(false);
+        tablaDetalles.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaDetalles.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaDetalles.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaDetalles.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaDetalles.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaDetalles.setGrosorBordeFilas(0);
+        tablaDetalles.setGrosorBordeHead(0);
+        tablaDetalles.setMultipleSeleccion(false);
+        tablaDetalles.setRowHeight(40);
+        tablaDetalles.getTableHeader().setResizingAllowed(false);
+        tablaDetalles.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(tablaDetalles);
+        if (tablaDetalles.getColumnModel().getColumnCount() > 0) {
+            tablaDetalles.getColumnModel().getColumn(0).setResizable(false);
+            tablaDetalles.getColumnModel().getColumn(1).setResizable(false);
+            tablaDetalles.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jPanel5.add(jScrollPane10, java.awt.BorderLayout.CENTER);
@@ -429,10 +431,10 @@ public class VistaKardex extends javax.swing.JPanel {
         jScrollPane11.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane11.setOpaque(false);
 
-        tablaUsuarios9.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
-        tablaUsuarios9.setForeground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios9.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEntradas.setBackground(new java.awt.Color(255, 255, 255));
+        tablaEntradas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaEntradas.setForeground(new java.awt.Color(255, 255, 255));
+        tablaEntradas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -453,32 +455,32 @@ public class VistaKardex extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaUsuarios9.setAltoHead(30);
-        tablaUsuarios9.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
-        tablaUsuarios9.setColorBordeFilas(new java.awt.Color(243, 243, 243));
-        tablaUsuarios9.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        tablaUsuarios9.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
-        tablaUsuarios9.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
-        tablaUsuarios9.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
-        tablaUsuarios9.setColorForegroundHead(new java.awt.Color(0, 0, 0));
-        tablaUsuarios9.setColorSelBackgound(new java.awt.Color(240, 240, 240));
-        tablaUsuarios9.setColorSelForeground(new java.awt.Color(51, 51, 51));
-        tablaUsuarios9.setFocusable(false);
-        tablaUsuarios9.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios9.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios9.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios9.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        tablaUsuarios9.setGridColor(new java.awt.Color(204, 204, 204));
-        tablaUsuarios9.setGrosorBordeFilas(0);
-        tablaUsuarios9.setGrosorBordeHead(0);
-        tablaUsuarios9.setMultipleSeleccion(false);
-        tablaUsuarios9.setRowHeight(40);
-        tablaUsuarios9.getTableHeader().setResizingAllowed(false);
-        tablaUsuarios9.getTableHeader().setReorderingAllowed(false);
-        jScrollPane11.setViewportView(tablaUsuarios9);
-        if (tablaUsuarios9.getColumnModel().getColumnCount() > 0) {
-            tablaUsuarios9.getColumnModel().getColumn(0).setResizable(false);
-            tablaUsuarios9.getColumnModel().getColumn(1).setResizable(false);
+        tablaEntradas.setAltoHead(30);
+        tablaEntradas.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaEntradas.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaEntradas.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaEntradas.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaEntradas.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaEntradas.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaEntradas.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaEntradas.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaEntradas.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaEntradas.setFocusable(false);
+        tablaEntradas.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaEntradas.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaEntradas.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaEntradas.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaEntradas.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaEntradas.setGrosorBordeFilas(0);
+        tablaEntradas.setGrosorBordeHead(0);
+        tablaEntradas.setMultipleSeleccion(false);
+        tablaEntradas.setRowHeight(40);
+        tablaEntradas.getTableHeader().setResizingAllowed(false);
+        tablaEntradas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane11.setViewportView(tablaEntradas);
+        if (tablaEntradas.getColumnModel().getColumnCount() > 0) {
+            tablaEntradas.getColumnModel().getColumn(0).setResizable(false);
+            tablaEntradas.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jPanel6.add(jScrollPane11, java.awt.BorderLayout.CENTER);
@@ -493,10 +495,10 @@ public class VistaKardex extends javax.swing.JPanel {
         jScrollPane12.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane12.setOpaque(false);
 
-        tablaUsuarios10.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
-        tablaUsuarios10.setForeground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios10.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSalidas.setBackground(new java.awt.Color(255, 255, 255));
+        tablaSalidas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaSalidas.setForeground(new java.awt.Color(255, 255, 255));
+        tablaSalidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -517,32 +519,32 @@ public class VistaKardex extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaUsuarios10.setAltoHead(30);
-        tablaUsuarios10.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
-        tablaUsuarios10.setColorBordeFilas(new java.awt.Color(243, 243, 243));
-        tablaUsuarios10.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        tablaUsuarios10.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
-        tablaUsuarios10.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
-        tablaUsuarios10.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
-        tablaUsuarios10.setColorForegroundHead(new java.awt.Color(0, 0, 0));
-        tablaUsuarios10.setColorSelBackgound(new java.awt.Color(240, 240, 240));
-        tablaUsuarios10.setColorSelForeground(new java.awt.Color(51, 51, 51));
-        tablaUsuarios10.setFocusable(false);
-        tablaUsuarios10.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios10.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios10.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios10.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        tablaUsuarios10.setGridColor(new java.awt.Color(204, 204, 204));
-        tablaUsuarios10.setGrosorBordeFilas(0);
-        tablaUsuarios10.setGrosorBordeHead(0);
-        tablaUsuarios10.setMultipleSeleccion(false);
-        tablaUsuarios10.setRowHeight(40);
-        tablaUsuarios10.getTableHeader().setResizingAllowed(false);
-        tablaUsuarios10.getTableHeader().setReorderingAllowed(false);
-        jScrollPane12.setViewportView(tablaUsuarios10);
-        if (tablaUsuarios10.getColumnModel().getColumnCount() > 0) {
-            tablaUsuarios10.getColumnModel().getColumn(0).setResizable(false);
-            tablaUsuarios10.getColumnModel().getColumn(1).setResizable(false);
+        tablaSalidas.setAltoHead(30);
+        tablaSalidas.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaSalidas.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaSalidas.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaSalidas.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaSalidas.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaSalidas.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaSalidas.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaSalidas.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaSalidas.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaSalidas.setFocusable(false);
+        tablaSalidas.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaSalidas.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaSalidas.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaSalidas.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaSalidas.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaSalidas.setGrosorBordeFilas(0);
+        tablaSalidas.setGrosorBordeHead(0);
+        tablaSalidas.setMultipleSeleccion(false);
+        tablaSalidas.setRowHeight(40);
+        tablaSalidas.getTableHeader().setResizingAllowed(false);
+        tablaSalidas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane12.setViewportView(tablaSalidas);
+        if (tablaSalidas.getColumnModel().getColumnCount() > 0) {
+            tablaSalidas.getColumnModel().getColumn(0).setResizable(false);
+            tablaSalidas.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jPanel7.add(jScrollPane12, java.awt.BorderLayout.CENTER);
@@ -565,10 +567,10 @@ public class VistaKardex extends javax.swing.JPanel {
         jScrollPane13.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane13.setOpaque(false);
 
-        tablaUsuarios11.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
-        tablaUsuarios11.setForeground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios11.setModel(new javax.swing.table.DefaultTableModel(
+        tablaExistencias.setBackground(new java.awt.Color(255, 255, 255));
+        tablaExistencias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaExistencias.setForeground(new java.awt.Color(255, 255, 255));
+        tablaExistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -589,32 +591,32 @@ public class VistaKardex extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaUsuarios11.setAltoHead(30);
-        tablaUsuarios11.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
-        tablaUsuarios11.setColorBordeFilas(new java.awt.Color(243, 243, 243));
-        tablaUsuarios11.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        tablaUsuarios11.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
-        tablaUsuarios11.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
-        tablaUsuarios11.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
-        tablaUsuarios11.setColorForegroundHead(new java.awt.Color(0, 0, 0));
-        tablaUsuarios11.setColorSelBackgound(new java.awt.Color(240, 240, 240));
-        tablaUsuarios11.setColorSelForeground(new java.awt.Color(51, 51, 51));
-        tablaUsuarios11.setFocusable(false);
-        tablaUsuarios11.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios11.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios11.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios11.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        tablaUsuarios11.setGridColor(new java.awt.Color(204, 204, 204));
-        tablaUsuarios11.setGrosorBordeFilas(0);
-        tablaUsuarios11.setGrosorBordeHead(0);
-        tablaUsuarios11.setMultipleSeleccion(false);
-        tablaUsuarios11.setRowHeight(40);
-        tablaUsuarios11.getTableHeader().setResizingAllowed(false);
-        tablaUsuarios11.getTableHeader().setReorderingAllowed(false);
-        jScrollPane13.setViewportView(tablaUsuarios11);
-        if (tablaUsuarios11.getColumnModel().getColumnCount() > 0) {
-            tablaUsuarios11.getColumnModel().getColumn(0).setResizable(false);
-            tablaUsuarios11.getColumnModel().getColumn(1).setResizable(false);
+        tablaExistencias.setAltoHead(30);
+        tablaExistencias.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaExistencias.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaExistencias.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaExistencias.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaExistencias.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaExistencias.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaExistencias.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaExistencias.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaExistencias.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaExistencias.setFocusable(false);
+        tablaExistencias.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaExistencias.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaExistencias.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaExistencias.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaExistencias.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaExistencias.setGrosorBordeFilas(0);
+        tablaExistencias.setGrosorBordeHead(0);
+        tablaExistencias.setMultipleSeleccion(false);
+        tablaExistencias.setRowHeight(40);
+        tablaExistencias.getTableHeader().setResizingAllowed(false);
+        tablaExistencias.getTableHeader().setReorderingAllowed(false);
+        jScrollPane13.setViewportView(tablaExistencias);
+        if (tablaExistencias.getColumnModel().getColumnCount() > 0) {
+            tablaExistencias.getColumnModel().getColumn(0).setResizable(false);
+            tablaExistencias.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jPanel8.add(jScrollPane13, java.awt.BorderLayout.CENTER);
@@ -644,13 +646,10 @@ public class VistaKardex extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public RSMaterialComponent.RSButtonMaterialOne btnExportPDF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
@@ -662,9 +661,7 @@ public class VistaKardex extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -677,11 +674,16 @@ public class VistaKardex extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private RSMaterialComponent.RSButtonMaterialOne rSButtonMaterialOne1;
-    public rojerusan.RSTableMetro tablaUsuarios10;
-    public rojerusan.RSTableMetro tablaUsuarios11;
-    public rojerusan.RSTableMetro tablaUsuarios8;
-    public rojerusan.RSTableMetro tablaUsuarios9;
+    public javax.swing.JLabel lbArticulo;
+    public javax.swing.JLabel lbCantMax;
+    public javax.swing.JLabel lbProveedor;
+    public javax.swing.JLabel lbReferencia;
+    public javax.swing.JLabel lbUbicacion;
+    public javax.swing.JLabel lbUnidad;
+    public rojerusan.RSTableMetro tablaDetalles;
+    public rojerusan.RSTableMetro tablaEntradas;
+    public rojerusan.RSTableMetro tablaExistencias;
+    public rojerusan.RSTableMetro tablaSalidas;
     public javax.swing.JTextField tfBusqueda;
     // End of variables declaration//GEN-END:variables
 }
