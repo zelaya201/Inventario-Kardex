@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -21,6 +16,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelos.Movimiento;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import modelos.Productos;
 import utilidades.CambiaPanel;
 import vistas.main.Menu;
@@ -33,21 +31,19 @@ import vistas.modulos.VistaProducto;
  *
  * @author Mario Zelaya
  */
+
 public class Controlador extends MouseAdapter implements ActionListener, MouseListener, KeyListener, ItemListener {
     
     private Menu vMenu;
     private Home vHome;
-    private String principalOn = "";
+    private String on = "";
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel md;
     
     /* PRODUCTOS */
     VistaProducto vProductos;
     ArrayList<Productos> productos = new ArrayList();
-       
-    //String codigoProducto, String categorias, String proveedor, String producto, String unidades, int cantMin, int cantMax, String referencia, String localizacion
-    Productos p1 = new Productos("001", "TELEFONÍA", "FACELA S.A DE C.V", "LAPIZ FACELA BUSCAMINAS", "UNIDADES", 5, 10, "M-10", "STAND-2");
-    Productos p2 = new Productos("002", "TELEFONÍA", "INSDUSTRIAS TODO MADERA S.A. DE S.V", "SILLA", "UNIDAD", 10, 40, "M-4", "SALA DE VENTAS");
-    
+
     /* REPORTE KARDEX */
     VistaKardex vKardex;
     
@@ -62,31 +58,35 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         this.vMenu.iniciar();
         vHome = new Home();
         new CambiaPanel(vMenu.body, vHome);
-        this.productos.add(p1);
-        this.productos.add(p2);
+        productos.add(new Productos("001", "Fragancias", "AVON", "Makuin Fragrance", "Gramos", "12", "30", "F-2", "Estante 2"));
+        productos.add(new Productos("002", "Cosmeticos", "AVON", "Cremita", "Gramos", "10", "40", "C-3", "Estante 3"));
+        productos.add(new Productos("003", "Muebles", "Maderas SA de CV", "Silla x", "Kilogramos", "16", "39", "M-2", "Almacen 2"));
+        productos.add(new Productos("004", "Collar 5U", "ORO main", "Quilates", "Gramos", "5", "25", "J-6", "Vitrina 6"));
+        productos.add(new Productos("005", "Fragancias", "ABARELA", "Fragrance W", "Gramos", "10", "30", "F-2", "Estante 9"));
     }
-    
-    public void mostrarMenu(){
-        
-    }
-    
+
+
     public void mostrarModulos(String modulo){
         if(modulo.equals("mInicio")){
             vHome = new Home();
             new CambiaPanel(vMenu.body, vHome);
-        }else if(modulo.equals("mProductos")){
-            vProductos = new VistaProducto();
-            new CambiaPanel(vMenu.body, vProductos);
         }else if(modulo.equals("mKardex")){
             vKardex = new VistaKardex();
             vKardex.setControlador(this);
-            principalOn = "Kardex";
+            on = "Kardex";
             new CambiaPanel(vMenu.body, vKardex);
         }else if(modulo.equals("mMovimientos")) {
             vMovimientos = new VistaMovimiento();
             vMovimientos.setControlador(this);
-            principalOn = "Movimientos";
+            on = "Movimientos";
             new CambiaPanel(vMenu.body, vMovimientos);
+        }else if(modulo.equals("mProductos")){
+            vProductos = new VistaProducto();
+            vProductos.setControlador(this);
+            vProductos.iniciar();
+            on = "productoActivo";
+            new CambiaPanel(vMenu.body, vProductos);
+            mostrarTabla(vProductos.tbProductos);
         }
     }
     
@@ -98,7 +98,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         DecimalFormat id = new DecimalFormat("000000");
         
         /* PRODUCTOS */
-        if (principalOn.equals("Movimientos")) {
+        if (on.equals("Movimientos")) {
             DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
             simbolos.setDecimalSeparator('.');
             DecimalFormat formateador = new DecimalFormat("0.00",simbolos);
@@ -124,7 +124,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     }
     
     public void mostrarBusqueda(int i){
-        if(principalOn.equals("Kardex")){
+        if(on.equals("Kardex")){
             
             vKardex.lbArticulo.setText(productos.get(i).getProducto());
             vKardex.lbCantMax.setText(String.valueOf(productos.get(i).getCantMax()));
@@ -142,7 +142,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     }
 
     public void eventosBotones(ActionEvent e){
-        if (principalOn.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
+        if (on.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
             if (productoSelected != null && vMovimientos.dcFecha.getDatoFecha() != null && vMovimientos.cbTipo.getSelectedIndex() > 0
                     && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty() 
                     && !vMovimientos.tfCantidad.getText().isEmpty() && !vMovimientos.tfValor.getText().isEmpty()) {
@@ -166,7 +166,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         }
     }
     
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         
@@ -186,7 +186,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     @Override
     public void keyPressed(KeyEvent ke) {
         
-        if(principalOn.equals("Kardex")){
+        if(on.equals("Kardex")){
             for (int i = 0; i < productos.size(); i++) {
                 if (productos.get(i).getCodigoProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar())) {
                     mostrarBusqueda(i);
@@ -196,10 +196,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
                 }
             }
         }
-        
-        
-        
-        
+
     }
 
     @Override
@@ -233,8 +230,87 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     }
 
     @Override
-    public void keyReleased(KeyEvent ke) {
-        
+    public void keyReleased(KeyEvent ae) {
+       
+    }
+
+    public void mostrarTabla(JTable tabla) {
+        md = (DefaultTableModel) tabla.getModel();
+        md.setRowCount(0);
+
+//        OBTENIENDO DE LA VISTA LOS DATOS
+        String codigo = this.vProductos.codProducto.getText();
+        String categ = this.vProductos.categoriaProd.getText();
+        String prove = this.vProductos.proveedor.getText();
+        String produ = this.vProductos.productos.getText();
+        String unidad;// = (String) this.vProductos.cbUnidad.getSelectedItem();
+        String cantMin = this.vProductos.CantMin.getText();
+        String cantMax = this.vProductos.CantMax.getText();
+        String ref = this.vProductos.referencias.getText();
+        String local = this.vProductos.txtLocalizacion.getText();
+        if (this.vProductos.cbUnidad.getSelectedItem().equals("Kilogramos")) {
+            unidad = "";
+        } else {
+            unidad = (String) this.vProductos.cbUnidad.getSelectedItem();
+        }
+
+//            PilaArrayList pilita = new PilaArrayList();
+        //Productos p = new Productos(codigo, categ, prove, produ, unidad, cantMin, cantMax, ref, local);
+//            pilita.push(new Productos(codigo, categ, prove, produ, unidad, cantMin, cantMax, ref, local));
+        //productos.add(p);
+        if (on.equals("productoActivo")) {
+//            PARA PRUEBAS
+            
+            for (int i = 0; i < productos.size(); i++) {
+                Object[] fila = {
+                    productos.get(i).getCodigoProducto(),
+                    productos.get(i).getCategorias(),
+                    productos.get(i).getProveedor(),
+                    productos.get(i).getProducto(),
+                    productos.get(i).getUnidades(),
+                    productos.get(i).getCantMin(),
+                    productos.get(i).getCantMax(),
+                    productos.get(i).getReferencia(),
+                    productos.get(i).getLocalizacion()
+                };
+                md.addRow(fila);
+            }
+
+//PARA AGREGAR DESDE EL MODULO
+//            for (int i = 0; i < productos.size(); i++) {
+//                Object[] fila = {
+//                    productos.get(i).getCodigoProducto(),
+//                    productos.get(i).getCategorias(),
+//                    productos.get(i).getProveedor(),
+//                    productos.get(i).getProducto(),
+//                    productos.get(i).getUnidades(),
+//                    productos.get(i).getCantMin(),
+//                    productos.get(i).getCantMax(),
+//                    productos.get(i).getReferencia(),
+//                    productos.get(i).getLocalizacion()
+//                };
+//                md.addRow(fila);
+//            }
+        }
+        if (md.getRowCount() < 1) {
+            md.addRow(new Object[]{"Sin Datos"});
+        }
+
+        tabla.setModel(md);
+        limpiar();
+    }
+
+    public void limpiar() {
+        this.vProductos.codProducto.setText("");
+        this.vProductos.categoriaProd.setText("");
+        this.vProductos.proveedor.setText("");
+        this.vProductos.productos.setText("");
+//        Unidades
+        this.vProductos.CantMin.setText("");
+        this.vProductos.CantMax.setText("");
+        this.vProductos.referencias.setText("");
+        this.vProductos.txtLocalizacion.setText("");
+        vProductos.enabledbt();
     }
 
     @Override

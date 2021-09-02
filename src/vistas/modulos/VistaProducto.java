@@ -1,20 +1,31 @@
 package vistas.modulos;
 
 import controlador.Controlador;
-import javax.swing.JOptionPane;
 
 //import utilidades.TextPrompt;
-
 public class VistaProducto extends javax.swing.JPanel {
 
     public VistaProducto() {
         initComponents();
-//        this.btnProducto.setActionCommand("activeProduct");
+        btnProducto.setEnabled(false);
     }
 
-//    public void setControlador(Controlador control){
-//        this.btnProducto.addActionListener(control); 
-//    }
+    public void enabledbt() {
+
+        if (!codProducto.getText().isEmpty() && !CantMax.getText().isEmpty() && !referencias.getText().isEmpty() && !productos.getText().isEmpty() && !txtLocalizacion.getText().isEmpty() && !categoriaProd.getText().isEmpty() && !proveedor.getText().isEmpty() && !CantMin.getText().isEmpty()) {
+            btnProducto.setEnabled(true);
+        } else {
+            btnProducto.setEnabled(false);
+        }
+    }
+
+    public void iniciar() {
+        this.setVisible(true);
+    }
+
+    public void setControlador(Controlador control) {
+        this.btnProducto.addActionListener(control);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,13 +96,7 @@ public class VistaProducto extends javax.swing.JPanel {
         tbProductos.setForeground(new java.awt.Color(255, 255, 255));
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "", "", "", "", "", null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Categoría", "Proveedor", "Producto", "Unidad", "Cantidad mínima", "Cantidad máxima", "Referencia", "Localización"
@@ -166,19 +171,35 @@ public class VistaProducto extends javax.swing.JPanel {
                 codProductoActionPerformed(evt);
             }
         });
+        codProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codProductoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codProductoKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 175;
         gridBagConstraints.ipady = 22;
-        gridBagConstraints.insets = new java.awt.Insets(20, -3, 12, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 0);
         jPanel1.add(codProducto, gridBagConstraints);
 
         CantMax.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
         CantMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CantMaxActionPerformed(evt);
+            }
+        });
+        CantMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CantMaxKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantMaxKeyTyped(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -206,6 +227,11 @@ public class VistaProducto extends javax.swing.JPanel {
         referencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 referenciasActionPerformed(evt);
+            }
+        });
+        referencias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                referenciasKeyReleased(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -248,6 +274,11 @@ public class VistaProducto extends javax.swing.JPanel {
                 productosActionPerformed(evt);
             }
         });
+        productos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                productosKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
@@ -276,7 +307,7 @@ public class VistaProducto extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipadx = 14;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
         jPanel1.add(iconPass7, gridBagConstraints);
@@ -285,6 +316,11 @@ public class VistaProducto extends javax.swing.JPanel {
         txtLocalizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLocalizacionActionPerformed(evt);
+            }
+        });
+        txtLocalizacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtLocalizacionKeyReleased(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -314,6 +350,11 @@ public class VistaProducto extends javax.swing.JPanel {
                 categoriaProdActionPerformed(evt);
             }
         });
+        categoriaProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                categoriaProdKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -327,6 +368,11 @@ public class VistaProducto extends javax.swing.JPanel {
         proveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 proveedorActionPerformed(evt);
+            }
+        });
+        proveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proveedorKeyReleased(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -368,6 +414,14 @@ public class VistaProducto extends javax.swing.JPanel {
                 CantMinActionPerformed(evt);
             }
         });
+        CantMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CantMinKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantMinKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -397,7 +451,7 @@ public class VistaProducto extends javax.swing.JPanel {
         jPanel1.add(btnProducto, gridBagConstraints);
 
         cbUnidad.setForeground(new java.awt.Color(51, 51, 51));
-        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramos", "Libras", "Toneladas", "Gramos", "Unidades", "Litros", "Galones", "Barriles", "Metros", "Metros Cubicos", "Otro" }));
+        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramos", "Libras", "Toneladas", "Gramos", "Unidades", "Litros", "Galones", "Barriles", "Metros", "Metros Cubicos", "Quilates", "Otro" }));
         cbUnidad.setColorArrow(new java.awt.Color(58, 66, 226));
         cbUnidad.setColorBorde(new java.awt.Color(204, 204, 204));
         cbUnidad.setColorFondo(new java.awt.Color(255, 255, 255));
@@ -449,6 +503,59 @@ public class VistaProducto extends javax.swing.JPanel {
     private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
 //JOptionPane.showMessageDialog(null, "AQUI OBVIAMENTE FUNCIONA");
     }//GEN-LAST:event_btnProductoActionPerformed
+
+    private void codProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codProductoKeyTyped
+        char val = evt.getKeyChar();
+        if (val < '0' || val > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_codProductoKeyTyped
+
+    private void CantMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantMinKeyTyped
+        char val = evt.getKeyChar();
+        if (val < '0' || val > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CantMinKeyTyped
+
+    private void CantMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantMaxKeyTyped
+        char val = evt.getKeyChar();
+        if (val < '0' || val > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CantMaxKeyTyped
+
+    private void codProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codProductoKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_codProductoKeyReleased
+
+    private void categoriaProdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categoriaProdKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_categoriaProdKeyReleased
+
+    private void proveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proveedorKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_proveedorKeyReleased
+
+    private void productosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productosKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_productosKeyReleased
+
+    private void CantMinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantMinKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_CantMinKeyReleased
+
+    private void CantMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantMaxKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_CantMaxKeyReleased
+
+    private void referenciasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_referenciasKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_referenciasKeyReleased
+
+    private void txtLocalizacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocalizacionKeyReleased
+        enabledbt();
+    }//GEN-LAST:event_txtLocalizacionKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
