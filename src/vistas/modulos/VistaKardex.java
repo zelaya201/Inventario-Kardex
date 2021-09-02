@@ -8,8 +8,8 @@ public class VistaKardex extends javax.swing.JPanel {
 
     public VistaKardex() {
         initComponents();
-        new TextPrompt("Buscar producto (por ID, descripción)", tfBusqueda);
-        
+        new TextPrompt("Buscar producto (por ID, nombre de artículo)", tfBusqueda);
+               
     }
     
     public void setControlador(Controlador control){
@@ -34,24 +34,38 @@ public class VistaKardex extends javax.swing.JPanel {
         rSButtonMaterialOne1 = new RSMaterialComponent.RSButtonMaterialOne();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaUsuarios = new rojerusan.RSTableMetro();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tablaUsuarios8 = new rojerusan.RSTableMetro();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tablaUsuarios9 = new rojerusan.RSTableMetro();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tablaUsuarios10 = new rojerusan.RSTableMetro();
+        jLabel13 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        tablaUsuarios11 = new rojerusan.RSTableMetro();
+        jLabel16 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -122,217 +136,500 @@ public class VistaKardex extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        java.awt.GridBagLayout jPanel2Layout = new java.awt.GridBagLayout();
-        jPanel2Layout.columnWidths = new int[] {0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0, 12, 0};
-        jPanel2Layout.rowHeights = new int[] {0, 25, 0, 25, 0, 25, 0};
-        jPanel2.setLayout(jPanel2Layout);
-
-        jLabel2.setBackground(new java.awt.Color(249, 249, 249));
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Unidad de medida:");
-        jLabel2.setOpaque(true);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 13;
-        gridBagConstraints.ipady = 15;
-        jPanel2.add(jLabel2, gridBagConstraints);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("SALA DE VENTAS");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("10");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
         jPanel2.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("UNIDAD");
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("INDUSTRIAS TODO MADERA S. A.");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel2.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Localización:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(50, 100, 0, 0);
-        jPanel2.add(jLabel6, gridBagConstraints);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Artículo:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
-        jPanel2.add(jLabel7, gridBagConstraints);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Proveedor:");
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("BOLSA DE REGALO GRANDE");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel8, gridBagConstraints);
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("BOLSA DE REGALO GRANDE");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
         jPanel2.add(jLabel9, gridBagConstraints);
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Cantidad mínima:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
-        jPanel2.add(jLabel10, gridBagConstraints);
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("10");
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("UNIDAD");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
         jPanel2.add(jLabel11, gridBagConstraints);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("INDUSTRIAS TODO MADERA S. A.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel12, gridBagConstraints);
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("Referencia:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(50, 100, 0, 0);
-        jPanel2.add(jLabel13, gridBagConstraints);
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("M-4");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
-        jPanel2.add(jLabel14, gridBagConstraints);
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("40");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel15, gridBagConstraints);
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("Cantidad máxima:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
-        jPanel2.add(jLabel16, gridBagConstraints);
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setText("Unidad de medida:");
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("40");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jLabel17, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
+        jPanel2.add(jLabel12, gridBagConstraints);
 
-        jPanel4.setBackground(new java.awt.Color(249, 249, 249));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("M-4");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        jPanel2.add(jLabel14, gridBagConstraints);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("SALA DE VENTAS");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel2.add(jLabel15, gridBagConstraints);
+
+        jLabel21.setBackground(new java.awt.Color(61, 137, 248));
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Tarjeta Kardex");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 24;
+        jPanel2.add(jLabel21, gridBagConstraints);
+
+        jLabel24.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Cantidad Máxima:");
+        jLabel24.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel2.add(jPanel4, gridBagConstraints);
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        jPanel2.add(jLabel24, gridBagConstraints);
+
+        jLabel25.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("Unidad de Medida:");
+        jLabel25.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        jPanel2.add(jLabel25, gridBagConstraints);
+
+        jLabel26.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("Referencia: ");
+        jLabel26.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(jLabel26, gridBagConstraints);
+
+        jLabel27.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("Ubicación:");
+        jLabel27.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(jLabel27, gridBagConstraints);
+
+        jLabel28.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("Cantidad Mínima");
+        jLabel28.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        jPanel2.add(jLabel28, gridBagConstraints);
+
+        jLabel29.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Proveedor:");
+        jLabel29.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(jLabel29, gridBagConstraints);
+
+        jLabel30.setBackground(new java.awt.Color(232, 233, 235));
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("Artículo:");
+        jLabel30.setOpaque(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(jLabel30, gridBagConstraints);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jScrollPane2.setOpaque(false);
+        jPanel4.setLayout(new java.awt.GridLayout());
 
-        tablaUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
-        tablaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane10.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 0, new java.awt.Color(204, 204, 204)));
+        jScrollPane10.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane10.setOpaque(false);
+
+        tablaUsuarios8.setBackground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaUsuarios8.setForeground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Fecha", "Concepto", "Valor Unitario", "Cantidad", "Valor", "Cantidad", "Valor", "Cantidad", "Valor"
+                "Fecha", "Concepto", "Valor Unitario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tablaUsuarios.setAltoHead(30);
-        tablaUsuarios.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
-        tablaUsuarios.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
-        tablaUsuarios.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
-        tablaUsuarios.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
-        tablaUsuarios.setColorForegroundHead(new java.awt.Color(0, 0, 0));
-        tablaUsuarios.setColorSelBackgound(new java.awt.Color(240, 240, 240));
-        tablaUsuarios.setColorSelForeground(new java.awt.Color(51, 51, 51));
-        tablaUsuarios.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        tablaUsuarios.setFuenteHead(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        tablaUsuarios.setGridColor(new java.awt.Color(255, 255, 255));
-        tablaUsuarios.setGrosorBordeFilas(0);
-        tablaUsuarios.setGrosorBordeHead(0);
-        tablaUsuarios.setMultipleSeleccion(false);
-        tablaUsuarios.setRowHeight(40);
-        tablaUsuarios.getTableHeader().setResizingAllowed(false);
-        tablaUsuarios.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tablaUsuarios);
-        if (tablaUsuarios.getColumnModel().getColumnCount() > 0) {
-            tablaUsuarios.getColumnModel().getColumn(0).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(1).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(2).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(3).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(4).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(5).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(6).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(7).setResizable(false);
-            tablaUsuarios.getColumnModel().getColumn(8).setResizable(false);
+        tablaUsuarios8.setAltoHead(30);
+        tablaUsuarios8.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaUsuarios8.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaUsuarios8.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaUsuarios8.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaUsuarios8.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaUsuarios8.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaUsuarios8.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaUsuarios8.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaUsuarios8.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaUsuarios8.setFocusable(false);
+        tablaUsuarios8.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios8.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios8.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios8.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaUsuarios8.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaUsuarios8.setGrosorBordeFilas(0);
+        tablaUsuarios8.setGrosorBordeHead(0);
+        tablaUsuarios8.setMultipleSeleccion(false);
+        tablaUsuarios8.setRowHeight(40);
+        tablaUsuarios8.getTableHeader().setResizingAllowed(false);
+        tablaUsuarios8.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(tablaUsuarios8);
+        if (tablaUsuarios8.getColumnModel().getColumnCount() > 0) {
+            tablaUsuarios8.getColumnModel().getColumn(0).setResizable(false);
+            tablaUsuarios8.getColumnModel().getColumn(1).setResizable(false);
+            tablaUsuarios8.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel5.add(jScrollPane10, java.awt.BorderLayout.CENTER);
+
+        jLabel10.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Entradas");
+        jLabel10.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(10, 1, 10, 1)));
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel5.add(jLabel10, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.add(jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Entradas");
+        jLabel6.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(10, 1, 10, 1)));
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(jLabel6, java.awt.BorderLayout.PAGE_START);
+
+        jScrollPane11.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane11.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 0, new java.awt.Color(204, 204, 204)));
+        jScrollPane11.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane11.setOpaque(false);
+
+        tablaUsuarios9.setBackground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaUsuarios9.setForeground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Cantidad", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaUsuarios9.setAltoHead(30);
+        tablaUsuarios9.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaUsuarios9.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaUsuarios9.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaUsuarios9.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaUsuarios9.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaUsuarios9.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaUsuarios9.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaUsuarios9.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaUsuarios9.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaUsuarios9.setFocusable(false);
+        tablaUsuarios9.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios9.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios9.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios9.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaUsuarios9.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaUsuarios9.setGrosorBordeFilas(0);
+        tablaUsuarios9.setGrosorBordeHead(0);
+        tablaUsuarios9.setMultipleSeleccion(false);
+        tablaUsuarios9.setRowHeight(40);
+        tablaUsuarios9.getTableHeader().setResizingAllowed(false);
+        tablaUsuarios9.getTableHeader().setReorderingAllowed(false);
+        jScrollPane11.setViewportView(tablaUsuarios9);
+        if (tablaUsuarios9.getColumnModel().getColumnCount() > 0) {
+            tablaUsuarios9.getColumnModel().getColumn(0).setResizable(false);
+            tablaUsuarios9.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jPanel6.add(jScrollPane11, java.awt.BorderLayout.CENTER);
+
+        jPanel4.add(jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane12.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 0, new java.awt.Color(204, 204, 204)));
+        jScrollPane12.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane12.setOpaque(false);
+
+        tablaUsuarios10.setBackground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaUsuarios10.setForeground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios10.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Cantidad", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaUsuarios10.setAltoHead(30);
+        tablaUsuarios10.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaUsuarios10.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaUsuarios10.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaUsuarios10.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaUsuarios10.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaUsuarios10.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaUsuarios10.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaUsuarios10.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaUsuarios10.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaUsuarios10.setFocusable(false);
+        tablaUsuarios10.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios10.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios10.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios10.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaUsuarios10.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaUsuarios10.setGrosorBordeFilas(0);
+        tablaUsuarios10.setGrosorBordeHead(0);
+        tablaUsuarios10.setMultipleSeleccion(false);
+        tablaUsuarios10.setRowHeight(40);
+        tablaUsuarios10.getTableHeader().setResizingAllowed(false);
+        tablaUsuarios10.getTableHeader().setReorderingAllowed(false);
+        jScrollPane12.setViewportView(tablaUsuarios10);
+        if (tablaUsuarios10.getColumnModel().getColumnCount() > 0) {
+            tablaUsuarios10.getColumnModel().getColumn(0).setResizable(false);
+            tablaUsuarios10.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jPanel7.add(jScrollPane12, java.awt.BorderLayout.CENTER);
+
+        jLabel13.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Salidas");
+        jLabel13.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 0, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(10, 1, 10, 1)));
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel7.add(jLabel13, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.add(jPanel7);
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane13.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jScrollPane13.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jScrollPane13.setOpaque(false);
+
+        tablaUsuarios11.setBackground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
+        tablaUsuarios11.setForeground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios11.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Cantidad", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaUsuarios11.setAltoHead(30);
+        tablaUsuarios11.setColorBackgoundHead(new java.awt.Color(249, 249, 249));
+        tablaUsuarios11.setColorBordeFilas(new java.awt.Color(243, 243, 243));
+        tablaUsuarios11.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        tablaUsuarios11.setColorFilasBackgound2(new java.awt.Color(249, 249, 249));
+        tablaUsuarios11.setColorFilasForeground1(new java.awt.Color(51, 51, 51));
+        tablaUsuarios11.setColorFilasForeground2(new java.awt.Color(51, 51, 51));
+        tablaUsuarios11.setColorForegroundHead(new java.awt.Color(0, 0, 0));
+        tablaUsuarios11.setColorSelBackgound(new java.awt.Color(240, 240, 240));
+        tablaUsuarios11.setColorSelForeground(new java.awt.Color(51, 51, 51));
+        tablaUsuarios11.setFocusable(false);
+        tablaUsuarios11.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios11.setFuenteFilas(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios11.setFuenteFilasSelect(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        tablaUsuarios11.setFuenteHead(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        tablaUsuarios11.setGridColor(new java.awt.Color(204, 204, 204));
+        tablaUsuarios11.setGrosorBordeFilas(0);
+        tablaUsuarios11.setGrosorBordeHead(0);
+        tablaUsuarios11.setMultipleSeleccion(false);
+        tablaUsuarios11.setRowHeight(40);
+        tablaUsuarios11.getTableHeader().setResizingAllowed(false);
+        tablaUsuarios11.getTableHeader().setReorderingAllowed(false);
+        jScrollPane13.setViewportView(tablaUsuarios11);
+        if (tablaUsuarios11.getColumnModel().getColumnCount() > 0) {
+            tablaUsuarios11.getColumnModel().getColumn(0).setResizable(false);
+            tablaUsuarios11.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jPanel8.add(jScrollPane13, java.awt.BorderLayout.CENTER);
+
+        jLabel16.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Existencias");
+        jLabel16.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(10, 1, 10, 1)));
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel8.add(jLabel16, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.add(jPanel8);
+
+        jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -355,22 +652,36 @@ public class VistaKardex extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private RSMaterialComponent.RSButtonMaterialOne rSButtonMaterialOne1;
-    public rojerusan.RSTableMetro tablaUsuarios;
+    public rojerusan.RSTableMetro tablaUsuarios10;
+    public rojerusan.RSTableMetro tablaUsuarios11;
+    public rojerusan.RSTableMetro tablaUsuarios8;
+    public rojerusan.RSTableMetro tablaUsuarios9;
     public javax.swing.JTextField tfBusqueda;
     // End of variables declaration//GEN-END:variables
 }
