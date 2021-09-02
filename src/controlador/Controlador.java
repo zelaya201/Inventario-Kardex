@@ -129,7 +129,9 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     }
 
     public void mostrarBusqueda(int i) {
+      
         if (on.equals("Kardex")) {
+
             vKardex.btnExportPDF.setEnabled(true);
             vKardex.lbArticulo.setText(productos.get(i).getCodigoProducto() + " - " + productos.get(i).getProducto());
             vKardex.lbCantMax.setText(String.valueOf(productos.get(i).getCantMax()));
@@ -152,7 +154,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             modelo4.setRowCount(0);
 
             for (Movimiento x : movimientos) {
-
+                
                 if (x.getProducto().getCodigoProducto().equals(productos.get(i).getCodigoProducto())) {
                     modelo1.addRow(new Object[]{x.getFecha(), x.getTipoMovimiento() + " -> " + x.getOperacion(), "$ " + x.getvUnitario()});
 
@@ -315,7 +317,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
 
     @Override
     public void keyTyped(KeyEvent ke) {
-
+        
     }
 
     @Override

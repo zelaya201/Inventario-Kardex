@@ -1,7 +1,6 @@
 package vistas.modulos;
 
 import controlador.Controlador;
-import java.awt.event.KeyListener;
 import utilidades.TextPrompt;
 
 public class VistaKardex extends javax.swing.JPanel {
