@@ -36,53 +36,67 @@ public class ExportPDF {
         PdfDocument pdf = new PdfDocument(writer);
         
         Document documento = new Document(pdf, PageSize.LETTER.rotate());
-        documento.setMargins(40, 20, 20, 20);
-        Table encabezado = new Table (4).useAllAvailableWidth();
+        documento.setMargins(40, 20, 40, 20);
         
+        Table encabezado = new Table (4).useAllAvailableWidth();
         encabezado.setHorizontalAlignment(HorizontalAlignment.CENTER);
-        encabezado.setBorder(Border.NO_BORDER);
+//        encabezado.setBorder(Border.NO_BORDER);
+//        encabezado.setBackgroundColor(new DeviceRgb(153,204,255));
 
-        encabezado.addCell(new Cell(0, 4).add(new Paragraph("Reporte Kardex - Control de inventario por producto").setItalic().setVerticalAlignment(VerticalAlignment.MIDDLE).setTextAlignment(TextAlignment.CENTER).setFontSize(16f)));
-        encabezado.addCell(new Cell().add(new Paragraph("Articulo: " +  listProductos.get(pos).getProducto()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));        
-        encabezado.addCell(new Cell().add(new Paragraph("Cod. Referencia: " + listProductos.get(pos).getCodigoProducto()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
-        encabezado.addCell(new Cell().add(new Paragraph("Cant. Maxima: " + listProductos.get(pos).getCantMax()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
-        encabezado.addCell(new Cell().add(new Paragraph("Ubicación: " + listProductos.get(pos).getLocalizacion()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
-        encabezado.addCell(new Cell().add(new Paragraph("Cant. Minima: " + listProductos.get(pos).getCantMin()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
-        encabezado.addCell(new Cell().add(new Paragraph("Unidad: " + listProductos.get(pos).getUnidades()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
-        encabezado.addCell(new Cell().add(new Paragraph("Proveedor: " + listProductos.get(pos).getProveedor()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
-        encabezado.addCell(new Cell().add(new Paragraph(" ").setTextAlignment(TextAlignment.CENTER)).setBorder(Border.NO_BORDER));
+        encabezado.addCell(new Cell(0, 4).setBorder(Border.NO_BORDER).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(61,137,248)).add(new Paragraph("Reporte Kardex / Artículos").setVerticalAlignment(VerticalAlignment.MIDDLE).setTextAlignment(TextAlignment.CENTER).setFontSize(16f)));
+//        encabezado.addCell(new Cell(1, 4).setBorder(Border.NO_BORDER).add(new Paragraph("\n")));
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Artículo: " +  listProductos.get(pos).getProducto()).setTextAlignment(TextAlignment.LEFT)));        
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Referencia: " + listProductos.get(pos).getCodigoProducto()).setTextAlignment(TextAlignment.LEFT)));
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Cant. Máxima: " + listProductos.get(pos).getCantMax()).setTextAlignment(TextAlignment.LEFT)));
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Cant. Mínima: " + listProductos.get(pos).getCantMin()).setTextAlignment(TextAlignment.LEFT)));//listProductos.get(pos).getLocalizacion()).setTextAlignment(TextAlignment.LEFT)).setBorder(Border.NO_BORDER));
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Ubicación: " + listProductos.get(pos).getLocalizacion()).setTextAlignment(TextAlignment.LEFT)));
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Unidad: " + listProductos.get(pos).getUnidades()).setTextAlignment(TextAlignment.LEFT)));
+        encabezado.addCell(new Cell().setBorder(Border.NO_BORDER).add(new Paragraph("Proveedor: " + listProductos.get(pos).getProveedor()).setTextAlignment(TextAlignment.LEFT)));
         
         Table table1 = new Table(new float[]{1,1,1,1,1,1,1,1,1}).useAllAvailableWidth();
         table1.setHorizontalAlignment(HorizontalAlignment.CENTER);
+           
+        table1.addHeaderCell(new Cell(2, 1).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(150,152,154)).add(new Paragraph("Fecha").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)).setVerticalAlignment(VerticalAlignment.MIDDLE));
+        table1.addHeaderCell(new Cell(2, 1).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(150,152,154)).add(new Paragraph("Concepto").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)).setVerticalAlignment(VerticalAlignment.MIDDLE));
+        table1.addHeaderCell(new Cell(2, 1).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(150,152,154)).add(new Paragraph("Valor Unitario").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)).setVerticalAlignment(VerticalAlignment.MIDDLE));
+        table1.addHeaderCell(new Cell(0, 2).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(150,152,154)).add(new Paragraph("Entradas").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));  
+        table1.addHeaderCell(new Cell(0, 2).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(150,152,154)).add(new Paragraph("Salidas").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
+        table1.addHeaderCell(new Cell(0, 2).setFontColor(new DeviceRgb(255,255,255)).setBackgroundColor(new DeviceRgb(150,152,154)).add(new Paragraph("Existencias").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
+       // .setBackgroundColor(new DeviceRgb(176,196,222))
+        table1.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
+        table1.addHeaderCell(new Cell().add(new Paragraph("Valor").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
         
+        table1.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
+        table1.addHeaderCell(new Cell().add(new Paragraph("Valor").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
         
-        table1.addHeaderCell(new Cell(2, 1).add(new Paragraph("Fecha").setTextAlignment(TextAlignment.CENTER)).setVerticalAlignment(VerticalAlignment.MIDDLE));
-        table1.addHeaderCell(new Cell(2, 1).add(new Paragraph("Concepto").setTextAlignment(TextAlignment.CENTER)).setVerticalAlignment(VerticalAlignment.MIDDLE));
-        table1.addHeaderCell(new Cell(2, 1).add(new Paragraph("Valor Unitario").setTextAlignment(TextAlignment.CENTER)).setVerticalAlignment(VerticalAlignment.MIDDLE));
-        table1.addHeaderCell(new Cell(0, 2).add(new Paragraph("Entradas").setTextAlignment(TextAlignment.CENTER)));  
-        table1.addHeaderCell(new Cell(0, 2).add(new Paragraph("Salidas").setTextAlignment(TextAlignment.CENTER)));
-        table1.addHeaderCell(new Cell(0, 2).add(new Paragraph("Existencias").setTextAlignment(TextAlignment.CENTER)));
+        table1.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
+        table1.addHeaderCell(new Cell().add(new Paragraph("Valor").setFontSize(13f).setTextAlignment(TextAlignment.CENTER)));
         
-        table1.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setTextAlignment(TextAlignment.CENTER)));
-        table1.addHeaderCell(new Cell().add(new Paragraph("Valor").setTextAlignment(TextAlignment.CENTER)));
-        
-        table1.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setTextAlignment(TextAlignment.CENTER)));
-        table1.addHeaderCell(new Cell().add(new Paragraph("Valor").setTextAlignment(TextAlignment.CENTER)));
-        
-        table1.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setTextAlignment(TextAlignment.CENTER)));
-        table1.addHeaderCell(new Cell().add(new Paragraph("Valor").setTextAlignment(TextAlignment.CENTER)));
-//        
-//        for(Movimiento x : listMovimientos){
+//        for(Movimiento x : listMovimientos){      
+//            int i = 0;
 //            if(x.getCodigo().equals(listProductos.get(pos).getCodigoProducto())){
-//                table1.addCell(new Cell().add(new Paragraph(x.getFecha().toString()).setTextAlignment(TextAlignment.CENTER)));
-//                table1.addCell(new Cell().add(new Paragraph(x.getOperacion() + "-" + x.getTipoMovimiento()).setTextAlignment(TextAlignment.CENTER)));
-//                table1.addCell(new Cell().add(new Paragraph("$ " + x.getvUnitario()).setTextAlignment(TextAlignment.RIGHT)));
-//                table1.addCell(new Cell().add(new Paragraph(x.g).setTextAlignment(TextAlignment.RIGHT)));
-//                table1.addCell(new Cell().add(new Paragraph("$ " + lista.get(i).getEntradaValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
-//                table1.addCell(new Cell().add(new Paragraph(String.valueOf(lista.get(i).getSalidaCant())).setTextAlignment(TextAlignment.RIGHT)));
-//                table1.addCell(new Cell().add(new Paragraph("$ " + lista.get(i).getSalidaValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
-//                table1.addCell(new Cell().add(new Paragraph(String.valueOf(lista.get(i).getExistCant())).setTextAlignment(TextAlignment.RIGHT)));
-//                table1.addCell(new Cell().add(new Paragraph("$ " + lista.get(i).getExistValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                if (i % 2 == 0){
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph(x.getFecha().toString()).setTextAlignment(TextAlignment.CENTER)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph(x.getOperacion() + "-" + x.getTipoMovimiento()).setTextAlignment(TextAlignment.CENTER)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph("$ " + x.getvUnitario()).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph(x.g).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph("$ " + lista.get(i).getEntradaValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph(String.valueOf(lista.get(i).getSalidaCant())).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph("$ " + lista.get(i).getSalidaValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph(String.valueOf(lista.get(i).getExistCant())).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().setBackgroundColor(new DeviceRgb(220,220,220)).add(new Paragraph("$ " + lista.get(i).getExistValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                } else {
+//                    table1.addCell(new Cell().add(new Paragraph(x.getFecha().toString()).setTextAlignment(TextAlignment.CENTER)));
+//                    table1.addCell(new Cell().add(new Paragraph(x.getOperacion() + "-" + x.getTipoMovimiento()).setTextAlignment(TextAlignment.CENTER)));
+//                    table1.addCell(new Cell().add(new Paragraph("$ " + x.getvUnitario()).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().add(new Paragraph(x.g).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().add(new Paragraph("$ " + lista.get(i).getEntradaValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().add(new Paragraph(String.valueOf(lista.get(i).getSalidaCant())).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().add(new Paragraph("$ " + lista.get(i).getSalidaValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().add(new Paragraph(String.valueOf(lista.get(i).getExistCant())).setTextAlignment(TextAlignment.RIGHT)));
+//                    table1.addCell(new Cell().add(new Paragraph("$ " + lista.get(i).getExistValor().toString()).setTextAlignment(TextAlignment.RIGHT)));
+//                }
+//                i++;
 //            }
 //        }
         
