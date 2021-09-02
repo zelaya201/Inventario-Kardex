@@ -1,22 +1,11 @@
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import modelos.Movimiento;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelos.Productos;
@@ -125,7 +114,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     
     public void mostrarBusqueda(int i){
         if(on.equals("Kardex")){
-            
+            vKardex.btnExportPDF.setEnabled(true);
             vKardex.lbArticulo.setText(productos.get(i).getProducto());
             vKardex.lbCantMax.setText(String.valueOf(productos.get(i).getCantMax()));
             vKardex.lbReferencia.setText(productos.get(i).getReferencia());
@@ -133,11 +122,8 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             vKardex.lbUbicacion.setText(productos.get(i).getLocalizacion());
             vKardex.lbUnidad.setText(productos.get(i).getUnidades());
             vKardex.lbProveedor.setText(productos.get(i).getProveedor());
-            
-            
+
             modelo = (DefaultTableModel) vKardex.tablaDetalles.getModel();
-            
-            
         }
     }
 
@@ -188,16 +174,18 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         
         if(on.equals("Kardex")){
             for (int i = 0; i < productos.size(); i++) {
-                if (productos.get(i).getCodigoProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar())) {
+                if (productos.get(i).getCodigoProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar()) || 
+                        productos.get(i).getProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar())) {
                     mostrarBusqueda(i);
                     break;
                 } else {
-                    System.out.println("No existe");
+                    limpiar();
                 }
             }
         }
 
     }
+    
 
     @Override
     public void mouseClicked(MouseEvent me) {
@@ -301,16 +289,28 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     }
 
     public void limpiar() {
-        this.vProductos.codProducto.setText("");
-        this.vProductos.categoriaProd.setText("");
-        this.vProductos.proveedor.setText("");
-        this.vProductos.productos.setText("");
-//        Unidades
-        this.vProductos.CantMin.setText("");
-        this.vProductos.CantMax.setText("");
-        this.vProductos.referencias.setText("");
-        this.vProductos.txtLocalizacion.setText("");
-        vProductos.enabledbt();
+        
+        if(on.equals("productoActivo")){
+            this.vProductos.codProducto.setText("");
+            this.vProductos.categoriaProd.setText("");
+            this.vProductos.proveedor.setText("");
+            this.vProductos.productos.setText("");
+            this.vProductos.CantMin.setText("");
+            this.vProductos.CantMax.setText("");
+            this.vProductos.referencias.setText("");
+            this.vProductos.txtLocalizacion.setText("");
+            vProductos.enabledbt();
+        }else if(on.equals("Kardex")){
+            vKardex.btnExportPDF.setEnabled(false);
+            vKardex.lbArticulo.setText("-");
+            vKardex.lbCantMax.setText("-");
+            vKardex.lbReferencia.setText("-");
+            vKardex.lbCantMin.setText("");
+            vKardex.lbUbicacion.setText("-");
+            vKardex.lbUnidad.setText("-");
+            vKardex.lbProveedor.setText("-");
+        }
+        
     }
 
     @Override

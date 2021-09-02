@@ -125,6 +125,7 @@ public class VistaKardex extends javax.swing.JPanel {
         btnExportPDF.setText("Exportar PDF");
         btnExportPDF.setBackgroundHover(new java.awt.Color(39, 116, 229));
         btnExportPDF.setEnabled(false);
+        btnExportPDF.setThemeTooltip(necesario.Global.THEMETOOLTIP.LIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
