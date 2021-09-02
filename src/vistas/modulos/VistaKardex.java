@@ -9,7 +9,7 @@ public class VistaKardex extends javax.swing.JPanel {
     public VistaKardex() {
         initComponents();
         new TextPrompt("Buscar producto (por ID, nombre de artículo)", tfBusqueda);
-        this.btnExportPDF.setActionCommand("ExportPDF");
+        this.btnExportPDF.setActionCommand("exportPDF");
                
     }
     
@@ -32,7 +32,7 @@ public class VistaKardex extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tfBusqueda = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        iconSearch = new javax.swing.JLabel();
         btnExportPDF = new RSMaterialComponent.RSButtonMaterialOne();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -90,6 +90,14 @@ public class VistaKardex extends javax.swing.JPanel {
 
         tfBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
+        tfBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfBusquedaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfBusquedaFocusLost(evt);
+            }
+        });
         tfBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tfBusquedaKeyPressed(evt);
@@ -107,19 +115,19 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.weightx = 60.0;
         jPanel3.add(tfBusqueda, gridBagConstraints);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25px.png"))); // NOI18N
-        jLabel1.setLabelFor(tfBusqueda);
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jLabel1.setOpaque(true);
+        iconSearch.setBackground(new java.awt.Color(255, 255, 255));
+        iconSearch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25px.png"))); // NOI18N
+        iconSearch.setLabelFor(tfBusqueda);
+        iconSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        iconSearch.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.ipady = 11;
-        jPanel3.add(jLabel1, gridBagConstraints);
+        jPanel3.add(iconSearch, gridBagConstraints);
 
         btnExportPDF.setBackground(new java.awt.Color(61, 137, 248));
         btnExportPDF.setText("Exportar PDF");
@@ -646,10 +654,23 @@ public class VistaKardex extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfBusquedaKeyTyped
 
+    private void tfBusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBusquedaFocusGained
+        iconSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 113, 243), 1, true));
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25_azul_px.png")));
+        tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(32, 113, 243)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
+    }//GEN-LAST:event_tfBusquedaFocusGained
+
+    private void tfBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBusquedaFocusLost
+        //iconSearch.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        iconSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25px.png")));
+        tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
+    }//GEN-LAST:event_tfBusquedaFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public RSMaterialComponent.RSButtonMaterialOne btnExportPDF;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;

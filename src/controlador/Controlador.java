@@ -1,15 +1,19 @@
 package controlador;
 
 import java.awt.event.*;
+import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableCellRenderer;
 import modelos.Movimiento;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelos.Productos;
 import utilidades.CambiaPanel;
+import utilidades.ExportPDF;
 import vistas.main.Menu;
 import vistas.modulos.Home;
 import vistas.modulos.VistaKardex;
@@ -35,6 +39,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
 
     /* REPORTE KARDEX */
     VistaKardex vKardex;
+    private int iterador;
     
     /* MOVIMIENTOS */
     VistaMovimiento vMovimientos;
@@ -127,7 +132,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         }
     }
 
-    public void eventosBotones(ActionEvent e){
+    public void eventosBotones(ActionEvent e) throws FileNotFoundException{
         if (on.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
             if (productoSelected != null && vMovimientos.dcFecha.getDatoFecha() != null && vMovimientos.cbTipo.getSelectedIndex() > 0
                     && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty() 
@@ -150,6 +155,11 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
                 mostrarDatos(vMovimientos.tbMovimiento);
             }
         }
+        
+        if(on.equals("Kardex") && e.getActionCommand().equals("exportPDF")){
+            new ExportPDF(productos, iterador);
+            limpiar();
+        }
     }
     
 
@@ -165,7 +175,17 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         }else if(ae.getActionCommand().equals("Movimientos")) {
             mostrarModulos("mMovimientos");
         }else if(ae.getActionCommand().equals("guardarMovimiento")){
-            eventosBotones(ae);
+            try {
+                eventosBotones(ae);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(ae.getActionCommand().equals("exportPDF")){
+            try {
+                eventosBotones(ae);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -177,6 +197,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
                 if (productos.get(i).getCodigoProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar()) || 
                         productos.get(i).getProducto().contains(vKardex.tfBusqueda.getText() + ke.getKeyChar())) {
                     mostrarBusqueda(i);
+                    iterador = i;
                     break;
                 } else {
                     limpiar();
