@@ -36,7 +36,7 @@ public class VistaKardex extends javax.swing.JPanel {
         btnExportPDF = new RSMaterialComponent.RSButtonMaterialOne();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lbCantMin = new javax.swing.JLabel();
         lbProveedor = new javax.swing.JLabel();
         lbArticulo = new javax.swing.JLabel();
         lbUnidad = new javax.swing.JLabel();
@@ -124,6 +124,7 @@ public class VistaKardex extends javax.swing.JPanel {
         btnExportPDF.setBackground(new java.awt.Color(61, 137, 248));
         btnExportPDF.setText("Exportar PDF");
         btnExportPDF.setBackgroundHover(new java.awt.Color(39, 116, 229));
+        btnExportPDF.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -140,9 +141,9 @@ public class VistaKardex extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("-");
+        lbCantMin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbCantMin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCantMin.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -150,7 +151,7 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 10;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
-        jPanel2.add(jLabel4, gridBagConstraints);
+        jPanel2.add(lbCantMin, gridBagConstraints);
 
         lbProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbProveedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -660,7 +661,6 @@ public class VistaKardex extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -676,6 +676,7 @@ public class VistaKardex extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane13;
     public javax.swing.JLabel lbArticulo;
     public javax.swing.JLabel lbCantMax;
+    public javax.swing.JLabel lbCantMin;
     public javax.swing.JLabel lbProveedor;
     public javax.swing.JLabel lbReferencia;
     public javax.swing.JLabel lbUbicacion;

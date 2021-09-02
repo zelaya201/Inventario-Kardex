@@ -127,6 +127,13 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         if(principalOn.equals("Kardex")){
             
             vKardex.lbArticulo.setText(productos.get(i).getProducto());
+            vKardex.lbCantMax.setText(String.valueOf(productos.get(i).getCantMax()));
+            vKardex.lbReferencia.setText(productos.get(i).getReferencia());
+            vKardex.lbCantMin.setText(String.valueOf(productos.get(i).getCantMin()));
+            vKardex.lbUbicacion.setText(productos.get(i).getLocalizacion());
+            vKardex.lbUnidad.setText(productos.get(i).getUnidades());
+            vKardex.lbProveedor.setText(productos.get(i).getProveedor());
+            
             
             modelo = (DefaultTableModel) vKardex.tablaDetalles.getModel();
             
