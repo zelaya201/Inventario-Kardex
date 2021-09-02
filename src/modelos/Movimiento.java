@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Movimiento {
     private String codigo;
-    private Date fecha;
+    private String fecha;
     private String tipoMovimiento;
     private String operacion;
     private Productos producto;
@@ -25,7 +25,7 @@ public class Movimiento {
     public Movimiento() {
     }
 
-    public Movimiento(String codigo, Date fecha, String tipoMovimiento, String operacion, Productos producto, double vUnitario, int cantidad, double vTotal) {
+    public Movimiento(String codigo, String fecha, String tipoMovimiento, String operacion, Productos producto, double vUnitario, int cantidad, double vTotal) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.tipoMovimiento = tipoMovimiento;
@@ -44,11 +44,11 @@ public class Movimiento {
         this.codigo = codigo;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
