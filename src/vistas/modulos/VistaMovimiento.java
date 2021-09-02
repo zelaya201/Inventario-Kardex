@@ -364,7 +364,6 @@ public class VistaMovimiento extends javax.swing.JPanel {
         jpBuscarP.setLayout(new java.awt.GridBagLayout());
 
         tfBusqueda.setBackground(new java.awt.Color(255, 255, 255));
-        tfBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;

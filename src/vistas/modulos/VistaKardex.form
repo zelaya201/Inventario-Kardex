@@ -74,6 +74,8 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfBusquedaFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfBusquedaFocusLost"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfBusquedaKeyPressed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfBusquedaKeyTyped"/>
           </Events>
@@ -86,7 +88,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="iconSearch">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -123,6 +125,9 @@
               <Color blue="e5" green="74" red="27" type="rgb"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
+            <Property name="themeTooltip" type="necesario.Global$THEMETOOLTIP" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LIGHT"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -289,7 +294,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel21">
+            <Component class="javax.swing.JLabel" name="lbCod">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f8" green="89" red="3d" type="rgb"/>
@@ -303,6 +308,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Tarjeta Kardex"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="0" gridY="0" gridWidth="4" gridHeight="1" fill="2" ipadX="0" ipadY="24" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -525,7 +533,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="3" rowCount="6">
+                          <Table columnCount="3" rowCount="0">
                             <Column editable="false" title="Fecha" type="java.lang.Object"/>
                             <Column editable="false" title="Concepto" type="java.lang.Object"/>
                             <Column editable="false" title="Valor Unitario" type="java.lang.Object"/>
@@ -729,7 +737,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="6">
+                          <Table columnCount="2" rowCount="0">
                             <Column editable="false" title="Cantidad" type="java.lang.Object"/>
                             <Column editable="false" title="Valor" type="java.lang.Object"/>
                           </Table>
@@ -863,7 +871,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="6">
+                          <Table columnCount="2" rowCount="0">
                             <Column editable="false" title="Cantidad" type="java.lang.Object"/>
                             <Column editable="false" title="Valor" type="java.lang.Object"/>
                           </Table>
@@ -1029,7 +1037,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="6">
+                          <Table columnCount="2" rowCount="0">
                             <Column editable="false" title="Cantidad" type="java.lang.Object"/>
                             <Column editable="false" title="Valor" type="java.lang.Object"/>
                           </Table>

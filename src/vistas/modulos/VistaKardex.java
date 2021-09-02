@@ -8,8 +8,8 @@ public class VistaKardex extends javax.swing.JPanel {
 
     public VistaKardex() {
         initComponents();
-        new TextPrompt("Buscar producto (por ID, nombre de artículo)", tfBusqueda);
-        this.btnExportPDF.setActionCommand("ExportPDF");
+        new TextPrompt("Buscar por código de artículo (Ej. 001)", tfBusqueda);
+        this.btnExportPDF.setActionCommand("exportPDF");
                
     }
     
@@ -32,7 +32,7 @@ public class VistaKardex extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tfBusqueda = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        iconSearch = new javax.swing.JLabel();
         btnExportPDF = new RSMaterialComponent.RSButtonMaterialOne();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -43,7 +43,7 @@ public class VistaKardex extends javax.swing.JPanel {
         lbCantMax = new javax.swing.JLabel();
         lbReferencia = new javax.swing.JLabel();
         lbUbicacion = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lbCod = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -90,6 +90,14 @@ public class VistaKardex extends javax.swing.JPanel {
 
         tfBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
+        tfBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfBusquedaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfBusquedaFocusLost(evt);
+            }
+        });
         tfBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tfBusquedaKeyPressed(evt);
@@ -107,24 +115,25 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.weightx = 60.0;
         jPanel3.add(tfBusqueda, gridBagConstraints);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25px.png"))); // NOI18N
-        jLabel1.setLabelFor(tfBusqueda);
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jLabel1.setOpaque(true);
+        iconSearch.setBackground(new java.awt.Color(255, 255, 255));
+        iconSearch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25px.png"))); // NOI18N
+        iconSearch.setLabelFor(tfBusqueda);
+        iconSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        iconSearch.setOpaque(true);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.ipady = 11;
-        jPanel3.add(jLabel1, gridBagConstraints);
+        jPanel3.add(iconSearch, gridBagConstraints);
 
         btnExportPDF.setBackground(new java.awt.Color(61, 137, 248));
         btnExportPDF.setText("Exportar PDF");
         btnExportPDF.setBackgroundHover(new java.awt.Color(39, 116, 229));
         btnExportPDF.setEnabled(false);
+        btnExportPDF.setThemeTooltip(necesario.Global.THEMETOOLTIP.LIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -224,18 +233,18 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel2.add(lbUbicacion, gridBagConstraints);
 
-        jLabel21.setBackground(new java.awt.Color(61, 137, 248));
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Tarjeta Kardex");
+        lbCod.setBackground(new java.awt.Color(61, 137, 248));
+        lbCod.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbCod.setForeground(new java.awt.Color(51, 51, 51));
+        lbCod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCod.setText("Tarjeta Kardex");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 24;
-        jPanel2.add(jLabel21, gridBagConstraints);
+        jPanel2.add(lbCod, gridBagConstraints);
 
         jLabel24.setBackground(new java.awt.Color(232, 233, 235));
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -356,12 +365,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaDetalles.setForeground(new java.awt.Color(255, 255, 255));
         tablaDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Fecha", "Concepto", "Valor Unitario"
@@ -437,12 +441,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaEntradas.setForeground(new java.awt.Color(255, 255, 255));
         tablaEntradas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cantidad", "Valor"
@@ -501,12 +500,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaSalidas.setForeground(new java.awt.Color(255, 255, 255));
         tablaSalidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cantidad", "Valor"
@@ -573,12 +567,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaExistencias.setForeground(new java.awt.Color(255, 255, 255));
         tablaExistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cantidad", "Valor"
@@ -645,14 +634,26 @@ public class VistaKardex extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfBusquedaKeyTyped
 
+    private void tfBusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBusquedaFocusGained
+        iconSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 113, 243), 1, true));
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25_azul_px.png")));
+        tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(32, 113, 243)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
+    }//GEN-LAST:event_tfBusquedaFocusGained
+
+    private void tfBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBusquedaFocusLost
+        //iconSearch.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        iconSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_property_25px.png")));
+        tfBusqueda.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1)));
+    }//GEN-LAST:event_tfBusquedaFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public RSMaterialComponent.RSButtonMaterialOne btnExportPDF;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -677,6 +678,7 @@ public class VistaKardex extends javax.swing.JPanel {
     public javax.swing.JLabel lbArticulo;
     public javax.swing.JLabel lbCantMax;
     public javax.swing.JLabel lbCantMin;
+    public javax.swing.JLabel lbCod;
     public javax.swing.JLabel lbProveedor;
     public javax.swing.JLabel lbReferencia;
     public javax.swing.JLabel lbUbicacion;
