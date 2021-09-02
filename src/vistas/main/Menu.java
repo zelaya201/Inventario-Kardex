@@ -21,12 +21,14 @@ public class Menu extends javax.swing.JFrame {
         this.btnHome.setActionCommand("Inicio");
         this.btnProducto.setActionCommand("Productos");
         this.btnReporteKardex.setActionCommand("Kardex");
+        this.btnMovimiento.setActionCommand("Movimientos");
     }
 
     public void setControlador(Controlador control){
         this.btnHome.addActionListener(control);
         this.btnProducto.addActionListener(control);
         this.btnReporteKardex.addActionListener(control);
+        this.btnMovimiento.addActionListener(control);
     }
     
     public void iniciar(){

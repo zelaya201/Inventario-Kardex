@@ -1,16 +1,20 @@
 package vistas.modulos;
 
 import controlador.Controlador;
+import javax.swing.JOptionPane;
+
+//import utilidades.TextPrompt;
 
 public class VistaProducto extends javax.swing.JPanel {
 
     public VistaProducto() {
         initComponents();
+//        this.btnProducto.setActionCommand("activeProduct");
     }
 
-    public void setControlador(Controlador control){
-  
-    }
+//    public void setControlador(Controlador control){
+//        this.btnProducto.addActionListener(control); 
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,6 +31,25 @@ public class VistaProducto extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbProductos = new rojerusan.RSTableMetro();
+        iconUser1 = new javax.swing.JLabel();
+        codProducto = new javax.swing.JTextField();
+        CantMax = new javax.swing.JTextField();
+        iconPass4 = new javax.swing.JLabel();
+        referencias = new javax.swing.JTextField();
+        iconPass5 = new javax.swing.JLabel();
+        iconPass6 = new javax.swing.JLabel();
+        productos = new javax.swing.JTextField();
+        iconRol = new javax.swing.JLabel();
+        iconPass7 = new javax.swing.JLabel();
+        txtLocalizacion = new javax.swing.JTextField();
+        iconPass8 = new javax.swing.JLabel();
+        categoriaProd = new javax.swing.JTextField();
+        proveedor = new javax.swing.JTextField();
+        iconPass9 = new javax.swing.JLabel();
+        iconPass10 = new javax.swing.JLabel();
+        CantMin = new javax.swing.JTextField();
+        btnProducto = new newscomponents.RSButtonIcon_new();
+        cbUnidad = new RSMaterialComponent.RSComboBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -51,18 +74,18 @@ public class VistaProducto extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 0, 0, 0, new java.awt.Color(210, 214, 222)));
-        jPanel1.setLayout(new java.awt.CardLayout());
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane2.setOpaque(false);
 
-        tbProductos.setBackground(new java.awt.Color(255, 255, 255));
         tbProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 249, 249)));
         tbProductos.setForeground(new java.awt.Color(255, 255, 255));
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"", "", "", "", "", "", "", "", null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -71,11 +94,11 @@ public class VistaProducto extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Imagen", "Producto", "Categoria", "Precio", "Stock", "Estado", "Editar", "Eliminar"
+                "Código", "Categoría", "Proveedor", "Producto", "Unidad", "Cantidad mínima", "Cantidad máxima", "Referencia", "Localización"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -110,20 +133,348 @@ public class VistaProducto extends javax.swing.JPanel {
             tbProductos.getColumnModel().getColumn(3).setResizable(false);
             tbProductos.getColumnModel().getColumn(4).setResizable(false);
             tbProductos.getColumnModel().getColumn(5).setResizable(false);
+            tbProductos.getColumnModel().getColumn(6).setResizable(false);
             tbProductos.getColumnModel().getColumn(7).setResizable(false);
+            tbProductos.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane2, "card2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 0, 0, 0);
+        jPanel1.add(jScrollPane2, gridBagConstraints);
+
+        iconUser1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barcode_22px.png"))); // NOI18N
+        iconUser1.setText("Codigo");
+        iconUser1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
+        jPanel1.add(iconUser1, gridBagConstraints);
+
+        codProducto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        codProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codProductoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 175;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.insets = new java.awt.Insets(20, -3, 12, 0);
+        jPanel1.add(codProducto, gridBagConstraints);
+
+        CantMax.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        CantMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CantMaxActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 175;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 30);
+        jPanel1.add(CantMax, gridBagConstraints);
+
+        iconPass4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/warehouse_22px.png"))); // NOI18N
+        iconPass4.setText("Max");
+        iconPass4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 78;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 22, 12, 0);
+        jPanel1.add(iconPass4, gridBagConstraints);
+
+        referencias.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        referencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                referenciasActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 225;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 50);
+        jPanel1.add(referencias, gridBagConstraints);
+
+        iconPass5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/empty_box_22px.png"))); // NOI18N
+        iconPass5.setText("Referencias");
+        iconPass5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 16, 12, 0);
+        jPanel1.add(iconPass5, gridBagConstraints);
+
+        iconPass6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/product_22px.png"))); // NOI18N
+        iconPass6.setText("Productos");
+        iconPass6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 47;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 17, 12, 0);
+        jPanel1.add(iconPass6, gridBagConstraints);
+
+        productos.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 225;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 2, 47);
+        jPanel1.add(productos, gridBagConstraints);
+
+        iconRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconRol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/purchase_orderB_22px.png"))); // NOI18N
+        iconRol.setText("Unidad");
+        iconRol.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
+        jPanel1.add(iconRol, gridBagConstraints);
+
+        iconPass7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/package_search_25px.png"))); // NOI18N
+        iconPass7.setText("Localización");
+        iconPass7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
+        jPanel1.add(iconPass7, gridBagConstraints);
+
+        txtLocalizacion.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        txtLocalizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocalizacionActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 178;
+        gridBagConstraints.ipady = 25;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 11, 0);
+        jPanel1.add(txtLocalizacion, gridBagConstraints);
+
+        iconPass8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compose_22px.png"))); // NOI18N
+        iconPass8.setText("Categoría");
+        iconPass8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
+        jPanel1.add(iconPass8, gridBagConstraints);
+
+        categoriaProd.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        categoriaProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriaProdActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 175;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 25);
+        jPanel1.add(categoriaProd, gridBagConstraints);
+
+        proveedor.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        proveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proveedorActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 175;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 30);
+        jPanel1.add(proveedor, gridBagConstraints);
+
+        iconPass9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/in_transit_22px.png"))); // NOI18N
+        iconPass9.setText("Proveedor");
+        iconPass9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 22, 12, 0);
+        jPanel1.add(iconPass9, gridBagConstraints);
+
+        iconPass10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPass10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/warehouse_22px.png"))); // NOI18N
+        iconPass10.setText("Min");
+        iconPass10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 78;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 12, 0);
+        jPanel1.add(iconPass10, gridBagConstraints);
+
+        CantMin.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0)));
+        CantMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CantMinActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 174;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 12, 23);
+        jPanel1.add(CantMin, gridBagConstraints);
+
+        btnProducto.setBackground(new java.awt.Color(61, 137, 248));
+        btnProducto.setText("Nuevo Producto");
+        btnProducto.setHideActionText(true);
+        btnProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnProducto.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ADD);
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(4, 3, 4, 3);
+        jPanel1.add(btnProducto, gridBagConstraints);
+
+        cbUnidad.setForeground(new java.awt.Color(51, 51, 51));
+        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramos", "Libras", "Toneladas", "Gramos", "Unidades", "Litros", "Galones", "Barriles", "Metros", "Metros Cubicos", "Otro" }));
+        cbUnidad.setColorArrow(new java.awt.Color(58, 66, 226));
+        cbUnidad.setColorBorde(new java.awt.Color(204, 204, 204));
+        cbUnidad.setColorFondo(new java.awt.Color(255, 255, 255));
+        cbUnidad.setColorSeleccion(new java.awt.Color(255, 255, 255));
+        cbUnidad.setColorSeleccionTXT(new java.awt.Color(58, 66, 226));
+        cbUnidad.setConBorde(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(20, -4, 12, 0);
+        jPanel1.add(cbUnidad, gridBagConstraints);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void codProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codProductoActionPerformed
+
+    private void CantMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantMaxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CantMaxActionPerformed
+
+    private void referenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenciasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_referenciasActionPerformed
+
+    private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productosActionPerformed
+
+    private void txtLocalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalizacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocalizacionActionPerformed
+
+    private void categoriaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaProdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoriaProdActionPerformed
+
+    private void proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_proveedorActionPerformed
+
+    private void CantMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CantMinActionPerformed
+
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+//JOptionPane.showMessageDialog(null, "AQUI OBVIAMENTE FUNCIONA");
+    }//GEN-LAST:event_btnProductoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField CantMax;
+    public javax.swing.JTextField CantMin;
+    public newscomponents.RSButtonIcon_new btnProducto;
+    public javax.swing.JTextField categoriaProd;
+    public RSMaterialComponent.RSComboBox cbUnidad;
+    public javax.swing.JTextField codProducto;
     public javax.swing.JPanel header;
+    public javax.swing.JLabel iconPass10;
+    public javax.swing.JLabel iconPass4;
+    public javax.swing.JLabel iconPass5;
+    public javax.swing.JLabel iconPass6;
+    public javax.swing.JLabel iconPass7;
+    public javax.swing.JLabel iconPass8;
+    public javax.swing.JLabel iconPass9;
+    public javax.swing.JLabel iconRol;
+    private javax.swing.JLabel iconUser1;
     public javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTextField productos;
+    public javax.swing.JTextField proveedor;
+    public javax.swing.JTextField referencias;
     public rojerusan.RSTableMetro tbProductos;
+    public javax.swing.JTextField txtLocalizacion;
     // End of variables declaration//GEN-END:variables
 }
