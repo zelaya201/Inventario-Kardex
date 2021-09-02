@@ -37,7 +37,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
     
     private Menu vMenu;
     private Home vHome;
-    private String principalOn = "";
+    private String on = "";
     DefaultTableModel modelo = new DefaultTableModel();
     
     /* PRODUCTOS */
@@ -45,6 +45,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
     
     /* MOVIMIENTOS */
     VistaMovimiento vMovimientos;
+    Movimiento movimientoSelected;
     ArrayList<Movimiento> movimientos = new ArrayList();
     Productos productoSelected = null;
     String prefijo = "";
@@ -71,7 +72,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
         }else if(modulo.equals("mMovimientos")) {
             vMovimientos = new VistaMovimiento();
             vMovimientos.setControlador(this);
-            principalOn = "Movimientos";
+            on = "Movimientos";
             vMovimientos.cbOperacion.setEnabled(false);
             vMovimientos.tfCodigo.setEnabled(false);
             new CambiaPanel(vMenu.body, vMovimientos);
@@ -85,7 +86,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
         DecimalFormat id = new DecimalFormat("000000");
         
         /* PRODUCTOS */
-        if (principalOn.equals("Movimientos")) {
+        if (on.equals("Movimientos")) {
             DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
             simbolos.setDecimalSeparator('.');
             DecimalFormat formateador = new DecimalFormat("0.00",simbolos);
@@ -116,19 +117,11 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
         modelo.setRowCount(0);
         DecimalFormat id = new DecimalFormat("000000");
         
-        /* PRODUCTOS */
-        if (principalOn.equals("Movimientos")) {
+        /* MOVIMIENTOS */
+        if (on.equals("Movimientos")) {
             DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
             simbolos.setDecimalSeparator('.');
             DecimalFormat formateador = new DecimalFormat("0.00",simbolos);
-
-            tabla.getColumnModel().getColumn(0).setCellRenderer(diseño); //Mantener diseño de la tabla por columns
-            tabla.getColumnModel().getColumn(1).setCellRenderer(diseño);
-            tabla.getColumnModel().getColumn(2).setCellRenderer(diseño);
-            tabla.getColumnModel().getColumn(3).setCellRenderer(diseño);
-            tabla.getColumnModel().getColumn(4).setCellRenderer(diseño);
-            tabla.getColumnModel().getColumn(5).setCellRenderer(diseño);
-            tabla.getColumnModel().getColumn(6).setCellRenderer(diseño);
             
             for (Object obj : lista) {
                 Productos x = (Productos) obj;
@@ -144,7 +137,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
     }
     
     public void eventosBotones(ActionEvent e){
-        if (principalOn.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
+        if (on.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
             if (productoSelected != null && vMovimientos.dcFecha.getDatoFecha() != null && vMovimientos.cbTipo.getSelectedIndex() > 0
                     && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty() 
                     && !vMovimientos.tfCantidad.getText().isEmpty() && !vMovimientos.lbProducto.getText().isEmpty()) {
@@ -153,12 +146,34 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
                         Double.parseDouble(vMovimientos.tfValorUnitario.getText()), Integer.parseInt(vMovimientos.tfCantidad.getText()),
                         Double.parseDouble(vMovimientos.lbProducto.getText()));
                 
-                if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Inventario Inicial") || vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada")) {
-                    if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra")) {
+                if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada")) {
+                    if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra") || vMovimientos.cbOperacion.getSelectedItem().toString().equals("Inventario inicial")) {
                         productoSelected.getExistencias().push(movimiento);
                     }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
+                        ArrayList<Movimiento> listaProd = productoSelected.getExistencias().toArray();
+                        ArrayList<Movimiento> temp = new ArrayList();
                         
+                        for (Movimiento x: listaProd) { /* Busca el movimiento */
+                            temp = (ArrayList<Movimiento>)productoSelected.getExistencias().pop();
+                            if (movimiento.getCodigo().equals(x.getCodigo())) {
+                                break;
+                            }
+                            System.out.println(x.getCodigo());
+                        }
+                        
+                        for (Movimiento x: temp) { /* Modifica el movimiento */
+                            if (movimiento.getCodigo().equals(x.getCodigo())) {
+                                x.setCantidad(x.getCantidad() - movimiento.getCantidad());
+                                x.setvTotal(x.getCantidad() * x.getvUnitario());
+                            }
+                            productoSelected.getExistencias().push(x);
+                        }
                     }
+                }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida")) {
+                    movimientoSelected = (Movimiento)productoSelected.getExistencias().pop();
+                    
+                    movimientoSelected.setCantidad(movimientoSelected.getCantidad() - movimiento.getCantidad());
+                    movimientoSelected.setvTotal(movimiento.getCantidad() * movimiento.getvUnitario());
                 }
                 
                 movimientos.add(movimiento);
@@ -184,7 +199,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if(principalOn.equals("Usuarios") && me.getSource() == vMovimientos.tbProductos){
+        if(on.equals("Usuarios") && me.getSource() == vMovimientos.tbProductos){
             int columna = vMovimientos.tbProductos.getSelectedColumn();
             //try{
             if(columna == 0 || columna == 1){
@@ -229,7 +244,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        if (principalOn.equals("Movimientos")) {
+        if (on.equals("Movimientos")) {
             ArrayList<Productos> lista = new ArrayList();
             
             for (Productos x: productos) {
@@ -254,7 +269,7 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
 
     @Override
     public void itemStateChanged(ItemEvent ie) {
-        if (principalOn.equals("Movimientos")) {
+        if (on.equals("Movimientos")) {
             if (ie.getItemSelectable() == vMovimientos.cbTipo && ie.getStateChange() == ItemEvent.SELECTED) {
                 vMovimientos.cbOperacion.setEnabled(true);
                 vMovimientos.cbOperacion.removeAllItems();
@@ -291,6 +306,8 @@ public class Controlador implements ActionListener, MouseListener, KeyListener, 
                 }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")){
                     vMovimientos.tfCodigo.setEnabled(true);
                     vMovimientos.tfCodigo.setPlaceholder("Cod. Movimiento");
+                    //vMovimientos.tfCantidad.setEnabled(false);
+                    //vMovimientos.tfValorUnitario.setEnabled(false);
                 }
             }
             
