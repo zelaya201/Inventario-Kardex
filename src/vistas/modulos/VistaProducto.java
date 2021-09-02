@@ -1,14 +1,12 @@
 package vistas.modulos;
 
 import controlador.Controlador;
-import javax.swing.JOptionPane;
 
 //import utilidades.TextPrompt;
 public class VistaProducto extends javax.swing.JPanel {
 
     public VistaProducto() {
         initComponents();
-//        this.btnProducto.setActionCommand("activeProduct");
         btnProducto.setEnabled(false);
     }
 
@@ -21,9 +19,14 @@ public class VistaProducto extends javax.swing.JPanel {
         }
     }
 
-//    public void setControlador(Controlador control){
-//        this.btnProducto.addActionListener(control); 
-//    }
+    public void iniciar() {
+        this.setVisible(true);
+    }
+
+    public void setControlador(Controlador control) {
+        this.btnProducto.addActionListener(control);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,13 +96,7 @@ public class VistaProducto extends javax.swing.JPanel {
         tbProductos.setForeground(new java.awt.Color(255, 255, 255));
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "", "", "", "", "", null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Categoría", "Proveedor", "Producto", "Unidad", "Cantidad mínima", "Cantidad máxima", "Referencia", "Localización"
@@ -454,7 +451,7 @@ public class VistaProducto extends javax.swing.JPanel {
         jPanel1.add(btnProducto, gridBagConstraints);
 
         cbUnidad.setForeground(new java.awt.Color(51, 51, 51));
-        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramos", "Libras", "Toneladas", "Gramos", "Unidades", "Litros", "Galones", "Barriles", "Metros", "Metros Cubicos", "Otro" }));
+        cbUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kilogramos", "Libras", "Toneladas", "Gramos", "Unidades", "Litros", "Galones", "Barriles", "Metros", "Metros Cubicos", "Quilates", "Otro" }));
         cbUnidad.setColorArrow(new java.awt.Color(58, 66, 226));
         cbUnidad.setColorBorde(new java.awt.Color(204, 204, 204));
         cbUnidad.setColorFondo(new java.awt.Color(255, 255, 255));
