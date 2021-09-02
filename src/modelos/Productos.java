@@ -111,7 +111,7 @@ public class Productos {
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     } 
-
+ 
     public ArrayList<Movimiento> getMovimientos() {
         return movimientos;
     }

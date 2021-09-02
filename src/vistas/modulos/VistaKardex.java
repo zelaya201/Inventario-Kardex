@@ -8,7 +8,7 @@ public class VistaKardex extends javax.swing.JPanel {
 
     public VistaKardex() {
         initComponents();
-        new TextPrompt("Buscar producto (por ID, nombre de artículo)", tfBusqueda);
+        new TextPrompt("Buscar por código de artículo (Ej. 001)", tfBusqueda);
         this.btnExportPDF.setActionCommand("exportPDF");
                
     }
@@ -43,7 +43,7 @@ public class VistaKardex extends javax.swing.JPanel {
         lbCantMax = new javax.swing.JLabel();
         lbReferencia = new javax.swing.JLabel();
         lbUbicacion = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lbCod = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -233,18 +233,18 @@ public class VistaKardex extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel2.add(lbUbicacion, gridBagConstraints);
 
-        jLabel21.setBackground(new java.awt.Color(61, 137, 248));
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Tarjeta Kardex");
+        lbCod.setBackground(new java.awt.Color(61, 137, 248));
+        lbCod.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbCod.setForeground(new java.awt.Color(51, 51, 51));
+        lbCod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCod.setText("Tarjeta Kardex");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 24;
-        jPanel2.add(jLabel21, gridBagConstraints);
+        jPanel2.add(lbCod, gridBagConstraints);
 
         jLabel24.setBackground(new java.awt.Color(232, 233, 235));
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -365,12 +365,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaDetalles.setForeground(new java.awt.Color(255, 255, 255));
         tablaDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Fecha", "Concepto", "Valor Unitario"
@@ -446,12 +441,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaEntradas.setForeground(new java.awt.Color(255, 255, 255));
         tablaEntradas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cantidad", "Valor"
@@ -510,12 +500,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaSalidas.setForeground(new java.awt.Color(255, 255, 255));
         tablaSalidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cantidad", "Valor"
@@ -582,12 +567,7 @@ public class VistaKardex extends javax.swing.JPanel {
         tablaExistencias.setForeground(new java.awt.Color(255, 255, 255));
         tablaExistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Cantidad", "Valor"
@@ -674,7 +654,6 @@ public class VistaKardex extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -699,6 +678,7 @@ public class VistaKardex extends javax.swing.JPanel {
     public javax.swing.JLabel lbArticulo;
     public javax.swing.JLabel lbCantMax;
     public javax.swing.JLabel lbCantMin;
+    public javax.swing.JLabel lbCod;
     public javax.swing.JLabel lbProveedor;
     public javax.swing.JLabel lbReferencia;
     public javax.swing.JLabel lbUbicacion;

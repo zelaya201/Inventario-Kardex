@@ -7,6 +7,7 @@ public class VistaProducto extends javax.swing.JPanel {
 
     public VistaProducto() {
         initComponents();
+        this.btnProducto.setActionCommand("guardarProducto");
         btnProducto.setEnabled(false);
     }
 
@@ -17,10 +18,6 @@ public class VistaProducto extends javax.swing.JPanel {
         } else {
             btnProducto.setEnabled(false);
         }
-    }
-
-    public void iniciar() {
-        this.setVisible(true);
     }
 
     public void setControlador(Controlador control) {
