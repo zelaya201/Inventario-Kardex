@@ -3,16 +3,18 @@ package controlador;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableCellRenderer;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import modelos.Movimiento;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelos.Pila;
 import modelos.Productos;
 import utilidades.CambiaPanel;
 import utilidades.ExportPDF;
@@ -44,8 +46,10 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
 
     /* MOVIMIENTOS */
     VistaMovimiento vMovimientos;
+    Movimiento movimientoSelected;
     ArrayList<Movimiento> movimientos = new ArrayList();
     Productos productoSelected = null;
+    String prefijo = "";
 
     public Controlador(Menu vMenu) {
         this.vMenu = vMenu;
@@ -60,9 +64,9 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         Productos p4 = new Productos("004", "COLLARES", "JOYERIA ELIAS", "QUILATES", "GRAMOS", "5", "25", "J-6", "VITRINA-0");
         Productos p5 = new Productos("005", "FRAGANCIAS", "ORIFLAME", "XTREME 3 PACK", "GRAMOS", "10", "30", "F-2", "STAND-9");
 
-        movimientos.add(new Movimiento("F001", new Date(), "Entrada", "Salida", p1, 2.92, 10, 15.23));
-        movimientos.add(new Movimiento("F002", new Date(), "Salida", "Salida", p1, 8.88, 4, 35.23));
-        movimientos.add(new Movimiento("F003", new Date(), "Salida", "Entrada", p1, 1.88, 2, 5.23));
+        movimientos.add(new Movimiento("F001", "02/09/2021", "Entrada", "Salida", p1, 2.92, 10, 15.23));
+        movimientos.add(new Movimiento("F002", "02/09/2021", "Salida", "Salida", p1, 8.88, 4, 35.23));
+        movimientos.add(new Movimiento("F003", "02/09/2021", "Salida", "Entrada", p1, 1.88, 2, 5.23));
 
         productos.add(p1);
         productos.add(p2);
@@ -71,8 +75,9 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         productos.add(p5);
     }
 
-    public void mostrarModulos(String modulo) {
-        if (modulo.equals("mInicio")) {
+
+    public void mostrarModulos(String modulo){
+        if(modulo.equals("mInicio")){
             vHome = new Home();
             new CambiaPanel(vMenu.body, vHome);
         } else if (modulo.equals("mKardex")) {
@@ -84,8 +89,10 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             vMovimientos = new VistaMovimiento();
             vMovimientos.setControlador(this);
             on = "Movimientos";
+            vMovimientos.cbOperacion.setEnabled(false);
+            vMovimientos.tfCodigo.setEnabled(false);
             new CambiaPanel(vMenu.body, vMovimientos);
-        } else if (modulo.equals("mProductos")) {
+        }else if(modulo.equals("mProductos")){
             vProductos = new VistaProducto();
             vProductos.setControlador(this);
             on = "productoActivo";
@@ -101,7 +108,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         modelo = (DefaultTableModel) tabla.getModel();
         modelo.setRowCount(0);
         DecimalFormat id = new DecimalFormat("000000");
-
+        
         /* PRODUCTOS */
         if (on.equals("Movimientos")) {
             DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
@@ -115,8 +122,8 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             tabla.getColumnModel().getColumn(4).setCellRenderer(diseño);
             tabla.getColumnModel().getColumn(5).setCellRenderer(diseño);
             tabla.getColumnModel().getColumn(6).setCellRenderer(diseño);
-
-            for (Movimiento x : movimientos) {
+            
+            for (Movimiento x: movimientos) {
                 modelo.addRow(new Object[]{x.getCodigo(), x.getFecha(), x.getTipoMovimiento() + ": " + x.getOperacion(), x.getProducto().getProducto(), "$ " + formateador.format(x.getvUnitario()), x.getCantidad(), "$ " + formateador.format(x.getvTotal())});
             }
 
@@ -182,29 +189,77 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         }
     }
 
-    public void eventosBotones(ActionEvent e) throws FileNotFoundException {
+
+    public void mostrarBusqueda (ArrayList lista, JTable tabla) {
+        modelo = (DefaultTableModel)tabla.getModel();
+        
+        /* MOVIMIENTOS */
+        if (on.equals("Movimientos")) {
+            for (Object obj : lista) {
+                Productos x = (Productos) obj;
+                modelo.addRow(new Object[]{x.getCodigoProducto(), x.getProducto()});
+            }
+            tabla.setModel(modelo);
+        }
+    }
+    
+    public void eventosBotones(ActionEvent e) throws FileNotFoundException{
         if (on.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
             if (productoSelected != null && vMovimientos.dcFecha.getDatoFecha() != null && vMovimientos.cbTipo.getSelectedIndex() > 0
-                    && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty()
-                    && !vMovimientos.tfCantidad.getText().isEmpty() && !vMovimientos.tfValor.getText().isEmpty()) {
-                Movimiento movimiento = new Movimiento(vMovimientos.tfCodigo.getText(), vMovimientos.dcFecha.getDatoFecha(),
+                    && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty() 
+                    && !vMovimientos.tfCantidad.getText().isEmpty() && !vMovimientos.lbProducto.getText().isEmpty()) {
+                
+                double valor = Double.parseDouble(vMovimientos.tfValorUnitario.getText()) * Integer.parseInt(vMovimientos.tfCantidad.getText());
+                
+                DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);               
+                
+                Movimiento movimiento = new Movimiento(vMovimientos.tfCodigo.getText(), df.format(vMovimientos.dcFecha.getDatoFecha()), 
                         vMovimientos.cbTipo.getSelectedItem().toString(), vMovimientos.cbOperacion.getSelectedItem().toString(), productoSelected,
                         Double.parseDouble(vMovimientos.tfValorUnitario.getText()), Integer.parseInt(vMovimientos.tfCantidad.getText()),
-                        Double.parseDouble(vMovimientos.tfValor.getText()));
+                        valor);
+                
+                Pila existencias = new Pila();
+                
+                if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada") || vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida") && !vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
+                    if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra") || vMovimientos.cbOperacion.getSelectedItem().toString().equals("Inventario inicial")) {
+                        existencias.push(movimiento);
+                        productoSelected.setExistencias(existencias);
+                        productoSelected.setMovimientos(movimientos);
+                    }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida")) {
+                        movimientoSelected = (Movimiento)productoSelected.getExistencias().pop();
 
-                if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Inventario Inicial") || vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada")) {
-                    if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra")) {
-                        productoSelected.getExistencias().push(movimiento);
-                    } else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
-
+                        movimientoSelected.setCantidad(movimientoSelected.getCantidad() - movimiento.getCantidad());
+                        movimientoSelected.setvTotal(movimiento.getCantidad() * movimiento.getvUnitario());
                     }
-                }
+                }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
+                        ArrayList<Movimiento> listaProd = productoSelected.getExistencias().toArray();
+                        ArrayList<Movimiento> temp = new ArrayList();
+                        
+                        for (Movimiento x: listaProd) { /* Busca el movimiento */
+                            temp = (ArrayList<Movimiento>)productoSelected.getExistencias().pop();
+                            if (movimiento.getCodigo().equals(x.getCodigo())) {
+                                break;
+                            }
+                            System.out.println(x.getCodigo());
+                        }
+                        
+                        for (Movimiento x: temp) { /* Modifica el movimiento */
+                            if (movimiento.getCodigo().equals(x.getCodigo())) {
+                                x.setCantidad(x.getCantidad() - movimiento.getCantidad());
+                                x.setvTotal(x.getCantidad() * x.getvUnitario());
+                            }
+                            productoSelected.getExistencias().push(x);
+                        }
+                    }
 
                 movimientos.add(movimiento);
+                productoSelected = null;
                 // AQUI VA LA ALERTA DE AGREGADO
                 mostrarDatos(vMovimientos.tbMovimiento);
+                limpiarCampos();
             }
         }
+        
         if (on.equals("productoActivo") && e.getActionCommand().equals("guardarProducto")) {
             String codigo = this.vProductos.codProducto.getText();
             String categ = this.vProductos.categoriaProd.getText();
@@ -288,31 +343,74 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             }
         }
 
+        if (on.equals("Movimientos")) {
+            ArrayList<Productos> lista = new ArrayList();
+            
+            if (!vMovimientos.tfCodigo.isEnabled()) {
+                for (Productos x: productos) {
+                    if (x.getProducto().contains((vMovimientos.tfBusqueda.getText() + ke.getKeyChar())) ||
+                            x.getCodigoProducto().contains((vMovimientos.tfBusqueda.getText() + ke.getKeyChar())) ||x.getProducto().contains((vMovimientos.tfBusqueda.getText()))) {
+                        lista.add(x);
+                    }else {
+                        limpiar();
+                    }
+                }          
+                mostrarBusqueda(lista, vMovimientos.tbProductos);
+            }else if (vMovimientos.tfCodigo.isEnabled() && vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")){
+                Movimiento mov = null;
+                for (Movimiento x: movimientos) {
+                    if (x.getCodigo().equals(vMovimientos.tfCodigo.getText() + ke.getKeyChar())) {
+                        mov = x;
+                    }else {
+                        break;
+                    }
+                }
+                
+                vMovimientos.tfValorUnitario.setText(String.valueOf(mov.getvUnitario()));
+                vMovimientos.tfValorUnitario.setEnabled(true);
+            }
+             
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(on.equals("Movimientos") && me.getSource() == vMovimientos.tbProductos){
+            int columna = vMovimientos.tbProductos.getSelectedColumn();
+            //try{
+            if(columna == 0 || columna == 1){
+                int fila = vMovimientos.tbProductos.getSelectedRow();
+                String codigo = vMovimientos.tbProductos.getValueAt(fila, 0).toString();
+
+                for (Productos x: productos) {
+                    if (codigo.equals(x.getCodigoProducto())) {
+                        productoSelected = x;
+                    }
+                }
+
+                vMovimientos.lbProducto.setText(productoSelected.getProducto());
+            }
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
     }
 
     @Override
@@ -325,23 +423,68 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
 
     }
 
+
     public void mostrarTabla(JTable tabla) {
         md = (DefaultTableModel) tabla.getModel();
         md.setRowCount(0);
-        for (int i = 0; i < productos.size(); i++) {
-            Object[] fila = {
-                productos.get(i).getCodigoProducto(),
-                productos.get(i).getCategorias(),
-                productos.get(i).getProveedor(),
-                productos.get(i).getProducto(),
-                productos.get(i).getUnidades(),
-                productos.get(i).getCantMin(),
-                productos.get(i).getCantMax(),
-                productos.get(i).getReferencia(),
-                productos.get(i).getLocalizacion()
-            };
-            md.addRow(fila);
+
+//        OBTENIENDO DE LA VISTA LOS DATOS
+        String codigo = this.vProductos.codProducto.getText();
+        String categ = this.vProductos.categoriaProd.getText();
+        String prove = this.vProductos.proveedor.getText();
+        String produ = this.vProductos.productos.getText();
+        String unidad;// = (String) this.vProductos.cbUnidad.getSelectedItem();
+        String cantMin = this.vProductos.CantMin.getText();
+        String cantMax = this.vProductos.CantMax.getText();
+        String ref = this.vProductos.referencias.getText();
+        String local = this.vProductos.txtLocalizacion.getText();
+        if (this.vProductos.cbUnidad.getSelectedItem().equals("Kilogramos")) {
+            unidad = "";
+        } else {
+            unidad = (String) this.vProductos.cbUnidad.getSelectedItem();
         }
+
+//            PilaArrayList pilita = new PilaArrayList();
+        //Productos p = new Productos(codigo, categ, prove, produ, unidad, cantMin, cantMax, ref, local);
+//            pilita.push(new Productos(codigo, categ, prove, produ, unidad, cantMin, cantMax, ref, local));
+        //productos.add(p);
+        if (on.equals("productoActivo")) {
+//            PARA PRUEBAS
+            
+            for (int i = 0; i < productos.size(); i++) {
+                Object[] fila = {
+                    productos.get(i).getCodigoProducto(),
+                    productos.get(i).getCategorias(),
+                    productos.get(i).getProveedor(),
+                    productos.get(i).getProducto(),
+                    productos.get(i).getUnidades(),
+                    productos.get(i).getCantMin(),
+                    productos.get(i).getCantMax(),
+                    productos.get(i).getReferencia(),
+                    productos.get(i).getLocalizacion()
+                };
+//                System.out.println(productos.get(i).getExistencias().toArray().toString());
+                md.addRow(fila);
+            }
+
+//PARA AGREGAR DESDE EL MODULO
+//            for (int i = 0; i < productos.size(); i++) {
+//                Object[] fila = {
+//                    productos.get(i).getCodigoProducto(),
+//                    productos.get(i).getCategorias(),
+//                    productos.get(i).getProveedor(),
+//                    productos.get(i).getProducto(),
+//                    productos.get(i).getUnidades(),
+//                    productos.get(i).getCantMin(),
+//                    productos.get(i).getCantMax(),
+//                    productos.get(i).getReferencia(),
+//                    productos.get(i).getLocalizacion()
+//                };
+//                md.addRow(fila);
+//            }
+
+        }
+        
         if (md.getRowCount() < 1) {
             md.addRow(new Object[]{"", "", "Ningún resultado encontrado"});
         }
@@ -372,6 +515,7 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             vKardex.lbUbicacion.setText("-");
             vKardex.lbUnidad.setText("-");
             vKardex.lbProveedor.setText("-");
+            
             DefaultTableModel modelo1 = (DefaultTableModel) vKardex.tablaDetalles.getModel();
             modelo1.setRowCount(0);
 
@@ -383,6 +527,11 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
 
             DefaultTableModel modelo4 = (DefaultTableModel) vKardex.tablaExistencias.getModel();
             modelo4.setRowCount(0);
+            
+        }else if (on.equals("Movimientos")) {
+            modelo = (DefaultTableModel) vMovimientos.tbProductos.getModel();
+            modelo.setRowCount(0);
+            vMovimientos.tbProductos.setModel(modelo);
         }
 
     }
@@ -390,9 +539,73 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     public void upTabla(JTable up) {
         up.getModel();
     }
+    
+    public void limpiarCampos(){
+        modelo = (DefaultTableModel) vMovimientos.tbProductos.getModel();
+        modelo.setRowCount(0);
+        vMovimientos.tbProductos.setModel(modelo);
+        
+        vMovimientos.tfCodigo.setText("");
+        vMovimientos.dcFecha.setDatoFecha(null);
+        vMovimientos.cbTipo.setSelectedIndex(0);
+        vMovimientos.cbOperacion.setSelectedIndex(0);
+        vMovimientos.lbProducto.setText("");
+        vMovimientos.tfValorUnitario.setText("");
+        vMovimientos.tfCantidad.setText("");
+        vMovimientos.lbProducto.setText("");
+        vMovimientos.tfBusqueda.setText("");
+    }
 
     @Override
     public void itemStateChanged(ItemEvent ie) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (on.equals("Movimientos")) {
+            if (ie.getItemSelectable() == vMovimientos.cbTipo && ie.getStateChange() == ItemEvent.SELECTED) {
+                vMovimientos.cbOperacion.setEnabled(true);
+                vMovimientos.cbOperacion.removeAllItems();
+                vMovimientos.cbOperacion.addItem("Seleccione");
+
+                Boolean isSet = false;
+
+                if (productoSelected != null) {
+                    for (Movimiento x: movimientos) {
+                        if (productoSelected.getCodigoProducto().equals(x.getProducto().getCodigoProducto())){
+                            if (x.getOperacion().equals("Inventario inicial") && x.getCantidad() > 0) {
+                                isSet = true;
+                            }
+                        }
+                    }
+
+                    if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada")) {
+                        if (!isSet) {
+                            vMovimientos.cbOperacion.addItem("Inventario inicial");
+                        }else {
+                            vMovimientos.cbOperacion.addItem("Compra");
+                            vMovimientos.cbOperacion.addItem("Devolucion");
+                        }
+                    }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida")){
+                        vMovimientos.cbOperacion.addItem("Venta");
+                        vMovimientos.cbOperacion.addItem("Devolucion");
+                    }else {
+                        vMovimientos.cbOperacion.setEnabled(false);
+                    }
+                }
+            }else if (ie.getItemSelectable() == vMovimientos.cbOperacion && ie.getStateChange() == ItemEvent.SELECTED) {
+                DecimalFormat id = new DecimalFormat("0000");
+                if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Inventario inicial") || vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra")) {
+                    vMovimientos.tfCodigo.setEnabled(false);
+                    vMovimientos.tfCodigo.setText("C" + id.format(movimientos.size()+1));
+                }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Venta")){
+                    vMovimientos.tfCodigo.setEnabled(false);
+                    vMovimientos.tfCodigo.setText("V" + id.format(movimientos.size()+1));
+                }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")){
+                    vMovimientos.tfCodigo.setEnabled(true);
+                    vMovimientos.tfCodigo.setPlaceholder("Cod. Movimiento");
+                    //vMovimientos.tfCantidad.setEnabled(false);
+                    //vMovimientos.tfValorUnitario.setEnabled(false);
+                }
+            }
+            
+        }
     }
+
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Pila<T> {
 
-  private Nodo<T> pilita;
+    private Nodo<T> pilita;
     
     public Pila() {
         pilita = null;
