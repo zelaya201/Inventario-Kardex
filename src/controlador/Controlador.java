@@ -73,7 +73,8 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             vMovimientos = new VistaMovimiento();
             vMovimientos.setControlador(this);
             on = "Movimientos";
-            vMovimientos.btnGuardar.setEnabled(false);
+            vMovimientos.cbOperacion.setEnabled(false);
+            vMovimientos.tfCodigo.setEnabled(false);
             new CambiaPanel(vMenu.body, vMovimientos);
             mostrarDatos(vMovimientos.tbMovimiento);
         }else if(modulo.equals("mProductos")){
@@ -141,7 +142,6 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             if (productoSelected != null && vMovimientos.dcFecha.getDatoFecha() != null && vMovimientos.cbTipo.getSelectedIndex() > 0
                     && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty() 
                     && !vMovimientos.tfCantidad.getText().isEmpty() && !vMovimientos.lbProducto.getText().isEmpty()) {
-                vMovimientos.btnGuardar.setEnabled(true);
                 
                 double valor = Double.parseDouble(vMovimientos.tfValorUnitario.getText()) * Integer.parseInt(vMovimientos.tfCantidad.getText());
                 
@@ -154,11 +154,18 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
                 
                 Pila existencias = new Pila();
                 
-                if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada")) {
+                if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada") || vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida") && !vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
                     if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra") || vMovimientos.cbOperacion.getSelectedItem().toString().equals("Inventario inicial")) {
                         existencias.push(movimiento);
                         productoSelected.setExistencias(existencias);
-                    }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
+                        productoSelected.setMovimientos(movimientos);
+                    }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida")) {
+                        movimientoSelected = (Movimiento)productoSelected.getExistencias().pop();
+
+                        movimientoSelected.setCantidad(movimientoSelected.getCantidad() - movimiento.getCantidad());
+                        movimientoSelected.setvTotal(movimiento.getCantidad() * movimiento.getvUnitario());
+                    }
+                }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
                         ArrayList<Movimiento> listaProd = productoSelected.getExistencias().toArray();
                         ArrayList<Movimiento> temp = new ArrayList();
                         
@@ -178,12 +185,6 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
                             productoSelected.getExistencias().push(x);
                         }
                     }
-                }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida")) {
-                    movimientoSelected = (Movimiento)productoSelected.getExistencias().pop();
-                    
-                    movimientoSelected.setCantidad(movimientoSelected.getCantidad() - movimiento.getCantidad());
-                    movimientoSelected.setvTotal(movimiento.getCantidad() * movimiento.getvUnitario());
-                }
                 
                 movimientos.add(movimiento);
                 productoSelected = null;
@@ -194,7 +195,6 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         }
     }
     
-
     @Override
     public void actionPerformed(ActionEvent ae) {
         
@@ -229,15 +229,30 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
         if (on.equals("Movimientos")) {
             ArrayList<Productos> lista = new ArrayList();
             
-            for (Productos x: productos) {
-                if (x.getProducto().contains((vMovimientos.tfBusqueda.getText() + ke.getKeyChar())) ||
-                        x.getCodigoProducto().contains((vMovimientos.tfBusqueda.getText() + ke.getKeyChar())) ||x.getProducto().contains((vMovimientos.tfBusqueda.getText()))) {
-                    lista.add(x);
-                }else {
-                    limpiar();
+            if (!vMovimientos.tfCodigo.isEnabled()) {
+                for (Productos x: productos) {
+                    if (x.getProducto().contains((vMovimientos.tfBusqueda.getText() + ke.getKeyChar())) ||
+                            x.getCodigoProducto().contains((vMovimientos.tfBusqueda.getText() + ke.getKeyChar())) ||x.getProducto().contains((vMovimientos.tfBusqueda.getText()))) {
+                        lista.add(x);
+                    }else {
+                        limpiar();
+                    }
+                }          
+                mostrarBusqueda(lista, vMovimientos.tbProductos);
+            }else if (vMovimientos.tfCodigo.isEnabled() && vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")){
+                Movimiento mov = null;
+                for (Movimiento x: movimientos) {
+                    if (x.getCodigo().equals(vMovimientos.tfCodigo.getText() + ke.getKeyChar())) {
+                        mov = x;
+                    }else {
+                        break;
+                    }
                 }
-            }          
-            mostrarBusqueda(lista, vMovimientos.tbProductos); 
+                
+                vMovimientos.tfValorUnitario.setText(String.valueOf(mov.getvUnitario()));
+                vMovimientos.tfValorUnitario.setEnabled(true);
+            }
+             
         }
     }
 
@@ -434,8 +449,10 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
             }else if (ie.getItemSelectable() == vMovimientos.cbOperacion && ie.getStateChange() == ItemEvent.SELECTED) {
                 DecimalFormat id = new DecimalFormat("0000");
                 if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Inventario inicial") || vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra")) {
+                    vMovimientos.tfCodigo.setEnabled(false);
                     vMovimientos.tfCodigo.setText("C" + id.format(movimientos.size()+1));
                 }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Venta")){
+                    vMovimientos.tfCodigo.setEnabled(false);
                     vMovimientos.tfCodigo.setText("V" + id.format(movimientos.size()+1));
                 }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")){
                     vMovimientos.tfCodigo.setEnabled(true);

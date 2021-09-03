@@ -19,6 +19,7 @@ public class VistaMovimiento extends javax.swing.JPanel {
         this.tbProductos.addMouseListener(control);
         this.cbTipo.addItemListener(control);
         this.cbOperacion.addItemListener(control);
+        this.tfCodigo.addKeyListener(control);
     }
 
     /**
