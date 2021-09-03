@@ -139,54 +139,65 @@ public class Controlador extends MouseAdapter implements ActionListener, MouseLi
     
     public void eventosBotones(ActionEvent e){
         if (on.equals("Movimientos") && e.getActionCommand().equals("guardarMovimiento")) {
+            Pila existencias = new Pila();
+            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT); 
+            String codigo = vMovimientos.tfCodigo.getText();
+            String fecha = df.format(vMovimientos.dcFecha.getDatoFecha());
+            String tipoMov = vMovimientos.cbTipo.getSelectedItem().toString();
+            String operacion = vMovimientos.cbOperacion.getSelectedItem().toString();
+            double vUnitario = Double.parseDouble(vMovimientos.tfValorUnitario.getText());
+            int cantidad = Integer.parseInt(vMovimientos.tfCantidad.getText());
+            
             if (productoSelected != null && vMovimientos.dcFecha.getDatoFecha() != null && vMovimientos.cbTipo.getSelectedIndex() > 0
                     && vMovimientos.cbOperacion.getSelectedIndex() > 0 && !vMovimientos.tfValorUnitario.getText().isEmpty() 
                     && !vMovimientos.tfCantidad.getText().isEmpty() && !vMovimientos.lbProducto.getText().isEmpty()) {
                 
-                double valor = Double.parseDouble(vMovimientos.tfValorUnitario.getText()) * Integer.parseInt(vMovimientos.tfCantidad.getText());
-                
-                DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);               
-                
-                Movimiento movimiento = new Movimiento(vMovimientos.tfCodigo.getText(), df.format(vMovimientos.dcFecha.getDatoFecha()), 
-                        vMovimientos.cbTipo.getSelectedItem().toString(), vMovimientos.cbOperacion.getSelectedItem().toString(), productoSelected,
-                        Double.parseDouble(vMovimientos.tfValorUnitario.getText()), Integer.parseInt(vMovimientos.tfCantidad.getText()),
-                        valor);
-                
-                Pila existencias = new Pila();
-                
                 if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Entrada") || vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida") && !vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
+                    double valor = vUnitario * cantidad;
+   
+                    Movimiento movimiento = new Movimiento(codigo, fecha, tipoMov, operacion, productoSelected, vUnitario, cantidad, valor); 
+                    
                     if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Compra") || vMovimientos.cbOperacion.getSelectedItem().toString().equals("Inventario inicial")) {
                         existencias.push(movimiento);
                         productoSelected.setExistencias(existencias);
                         productoSelected.setMovimientos(movimientos);
-                    }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Salida")) {
+                    }else if (vMovimientos.cbTipo.getSelectedItem().toString().equals("Venta")) {
                         movimientoSelected = (Movimiento)productoSelected.getExistencias().pop();
 
                         movimientoSelected.setCantidad(movimientoSelected.getCantidad() - movimiento.getCantidad());
                         movimientoSelected.setvTotal(movimiento.getCantidad() * movimiento.getvUnitario());
                     }
+                    movimientos.add(movimiento);
+                    productoSelected.getMovimientos().add(movimiento);
                 }else if (vMovimientos.cbOperacion.getSelectedItem().toString().equals("Devolucion")) {
-                        ArrayList<Movimiento> listaProd = productoSelected.getExistencias().toArray();
-                        ArrayList<Movimiento> temp = new ArrayList();
-                        
-                        for (Movimiento x: listaProd) { /* Busca el movimiento */
-                            temp = (ArrayList<Movimiento>)productoSelected.getExistencias().pop();
-                            if (movimiento.getCodigo().equals(x.getCodigo())) {
-                                break;
-                            }
-                            System.out.println(x.getCodigo());
-                        }
-                        
-                        for (Movimiento x: temp) { /* Modifica el movimiento */
-                            if (movimiento.getCodigo().equals(x.getCodigo())) {
-                                x.setCantidad(x.getCantidad() - movimiento.getCantidad());
-                                x.setvTotal(x.getCantidad() * x.getvUnitario());
-                            }
-                            productoSelected.getExistencias().push(x);
+                    ArrayList<Movimiento> listaProd = productoSelected.getExistencias().toArray();
+                    ArrayList<Movimiento> temp = new ArrayList();
+                    Movimiento mov = null;
+                    
+                    for (Movimiento x: productoSelected.getMovimientos()) { /* Buscamos el movimiento */
+                        if (x.getCodigo().equals(vMovimientos.tfCodigo.getText())) {
+                            mov = x;
                         }
                     }
+                    
+                    for (Movimiento x: listaProd) { /* Busca el movimiento */
+                        temp = (ArrayList<Movimiento>)productoSelected.getExistencias().pop();
+                        if (movimiento.getCodigo().equals(x.getCodigo())) {
+                            break;
+                        }
+                        System.out.println(x.getCodigo());
+                    }
+
+                    for (Movimiento x: temp) { /* Modifica el movimiento */
+                        if (movimiento.getCodigo().equals(x.getCodigo())) {
+                            x.setCantidad(x.getCantidad() - movimiento.getCantidad());
+                            x.setvTotal(x.getCantidad() * x.getvUnitario());
+                        }
+                        productoSelected.getExistencias().push(x);
+                    }
+                }
                 
-                movimientos.add(movimiento);
+                
                 productoSelected = null;
                 // AQUI VA LA ALERTA DE AGREGADO
                 mostrarDatos(vMovimientos.tbMovimiento);
