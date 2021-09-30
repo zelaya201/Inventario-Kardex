@@ -48,12 +48,7 @@ public class Controlador implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        if(ae.getActionCommand().equals("Inicio")){
-            mostrarModulos("mInicio");
-        }else if(ae.getActionCommand().equals("Productos")){
-            mostrarModulos("mProductos");
-        }
+       
     }
  
 }
